@@ -51,6 +51,11 @@
         p.text-muted {
           font-size: 12px;
         }
+
+        a.navLink:hover
+        { 
+          color: darkorange;
+        }
       
       </style>
 
@@ -90,7 +95,7 @@
       
         <nav class="navbar navbar-default navbar-static-top navbar-fill" role="navigation">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navMenu">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
@@ -100,10 +105,11 @@
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <div class="collapse navbar-collapse" id="navMenu">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Link 1</a></li>
-              <li><a href="#">Link 2</a></li>
+              <li class="active"><a href="#" class="navLink">Personal Details</a></li>
+              <li><a href="#" class="navLink">Car Details</a></li>
+              <li><a href="#" class="navLink">Retrieve Quote</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </nav>
@@ -120,7 +126,7 @@
               <div class="row">
                 <form class="form-horizontal">
                   <div class="form-group">
-                    <label for="nameInput" class="control-label col-md-2">Your Name</label>
+                    <label for="nameInput" class="control-label col-md-2">Name</label>
                     <div class="col-md-4">
                       <input id="txtName" type="text" name="nameInput" class="form-control personalDetails"
                         placeholder="Your Name" />
@@ -129,19 +135,15 @@
                   <div class="form-group">
                     <label for="ageInput" class="control-label col-md-2">Age</label>
                     <div class="col-md-2">
-                      <input id="txtAge" type="text" name="ageInput" class="form-control personalDetails"
+                      <input id="txtAge" type="number" name="ageInput" class="form-control personalDetails"
                       placeholder="Your Age" />
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="genderInput" class="control-label col-md-2">Gender</label>
-                    <div class="col-md-1">  
-                      <select id="ddlGender" class="form-control personalDetails"
-                      placeholder="Your Gender">
-                        <option>-</option>
-                        <option>M</option>
-                        <option>F</option>
-                      </select>
+                    <div class="col-md-2">  
+                      <input id="rdoGenderMale" class="personalDetails" type="radio" value="male"> Male
+                      <input id="rdoGenderFemale" class="personalDetails" type="radio" value="female"> Female
                     </div>
                   </div>
                   <div class="form-group">
@@ -185,12 +187,12 @@
         <!-- WRAP CAR DETAILS FORM IN CHILD PANEL -->
         <div id= "dvCarDetails" class="dvCarDetails">
           <h1>Car details</h1>
-          <p>Tell us a little bit about your car...</p>
+          <p>In order to give you a quote, we need to know a little bit about your car.</p>
           <div class="row">
             <form class="form-horizontal">
               <div class="form-group">
                 <label for="modelManufacturerInput" class="control-label col-md-2">Manufacturer</label>
-                <div class="col-md-10">
+                <div class="col-md-4">
                   <select id="ddlmodelManufacturer" class="form-control">
                     <option>Select</option>
                     <option>Audi</option>
@@ -204,43 +206,48 @@
               </div>
               <div class="form-group">
                 <label for="modelInput" class="control-label col-md-2">Model</label>
-                <div class="col-md-10">
+                <div class="col-md-4">
                   <input id="txtModel" type="text" name="modelInput" class="form-control"
                   placeholder="Your Model" />
                 </div>
               </div>
               <div class="form-group">
                 <label for="modelAgeInput" class="control-label col-md-2">Age</label>
-                <div class="col-md-10">
-                  <input id="txtModelAge" type="text" name="modelAge" class="form-control"
+                <div class="col-md-2">
+                  <input id="txtModelAge" type="number" name="modelAge" class="form-control"
                   placeholder="Model Age" />
                 </div>
               </div>
               <div class="form-group">
                 <label for="modelEngineInput" class="control-label col-md-2">Engine Size</label>
-                <div class="col-md-10">  
+                <div class="col-md-4">  
                   <input id="txtModelEngine" type="text" name="modelEngine" class="form-control"
                   placeholder="Model Engine" />
                 </div>
               </div>
               <div class="form-group">
                 <label for="modelStorage" class="control-label col-md-2">Storage</label>
-                <div class="col-md-10">
-                  <input id="txtModelStorage" type="text" name="modelStorage" class="form-control"
-                  placeholder="Model Storage" />
+                <div class="col-md-4">
+                  <select id="ddlModelStorage" class="form-control">
+                    <option>Select</option>
+                    <option>Garage</option>
+                    <option>Driveway</option>
+                    <option>Cul-de-sac</option>
+                    <option>Public Road</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group">
                 <label for="modelEstValue" class="control-label col-md-2">Estimated Value</label>
-                <div class="col-md-10">
-                  <input id="txtModelEstValue" type="text" name="modelEstValue" class="form-control"
+                <div class="col-md-4">
+                  <input id="txtModelEstValue" type="number" name="modelEstValue" class="form-control"
                   placeholder="Model Value" />
                 </div>
               </div>
 
               <div class="form-group">
-                <div class="col-md-10">
-                <!-- ONCLICK OF BUTTON, VALIDATE FORM DETAILS AND IF VALID - MAKE API REQUEST WITH FORM FIELDS -->
+                <div class="col-md-4">
+                <!-- ONCLICK OF BUTTON, VALIDATE FORM DETAILS AND IF VALID - MAKE API REQUEST, PASSING FORM CONTENT -->
                 <input id="btnNext" type="submit" value="Get Quote" class="btn btn-success"
                 onclick="" />
                 </div>
@@ -261,5 +268,3 @@
     
     </body>
   </html>
-
-      
