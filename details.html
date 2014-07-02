@@ -8,14 +8,14 @@
       <meta name="author" content="Andrew Hiles, James Anderson">
       <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
-      <title>// LIT Car Insurance Application //</title>
+      <title>LIT Car Insurance Application</title>
 
       <!-- Bootstrap core CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
-      <script type="text/javascript" src="bootstrap-3.1.1-dist/js/jquery-2.1.1.min.js"></script>
-      <script src="js/bootstrap.js"></script>
-      <script src="js/jquery-2.1.1.js"></script>
-
+      <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+      <script type="text/javascript" src="js/bootstrap.js"></script>
+      <script type="text/javascript" src="js/navigation.js"></script>
+      
       <style>
 
         .navbar-fill {
@@ -28,11 +28,11 @@
           margin-top: 30px;
         }
 
-        .personalDetailsAlert{
+        .dvCarDetails {
           display: none;
         }
 
-        .dvCarDetails {
+        .dvQuoteDetails {
           display: none;
         }
 
@@ -62,82 +62,65 @@
 
       <script type="text/javascript">
 
-      $().ready(function(){
+        function validateFields(sectionToValidate) {
 
-        $("#personalLink a").click(function(){
-          showPersonalDetails(); 
-          return false;
-        });
+          var emptyFields = 0;
+          var textBoxes = $("#" + sectionToValidate + " input:text");
 
-        $("#carLink a").click(function(){
-          showCarDetails(); 
-          return false;
-        });
-      });
+          //Check text boxes for content
+          for (var index = 0; index < textBoxes.length; index++) {
+            if(textBoxes[index].value == "") {
+              // Increment counter
+              emptyFields++;
+            }
+          }
 
-      // JavaScript functionality
-      function validateFields(sectionToValidate) {
-
-        var emptyFields = 0;
-        var textBoxes = $("#" + sectionToValidate + " input:text");
-
-        //Check text boxes for content
-        for (var index = 0; index < textBoxes.length; index++) {
-          if(textBoxes[index].value == "") {
-            // Increment counter
+          //Check radio buttons for content
+          /*if ($("#" + sectionToValidate + " input:radio").is(':checked') != true)
             emptyFields++;
+
+          //Check Dropdown for content
+          var dropdowns = $("#" + sectionToValidate + " option").filter(':selected').text();
+          for (var index = 0; index < dropdowns.length; index++) {
+            if ( dropdowns[index].value === "Select" )
+              emptyFields++;
+          }*/
+
+          //Check number boxes for content
+          if ($('#' + sectionToValidate + ' input[type="number"]').val() === "")
+            emptyFields++;
+
+          return emptyFields;
+        }
+
+        function getQuote() {
+          //reset error message
+          $("#dvCarDetailsAlert").hide();
+
+          var emptyFields = validateFields("dvCarDetails");
+
+          if (emptyFields === 0)
+          {
+            var gender = $("#dvPersonalDetails input:radio[name=rdoSex]:checked").val();
+            var age = $("#txtAge").val();
+            var yearsNoClaims = $("#ddlNCB option:selected").val();
+            var costOfCar = $("#txtModelEstValue").val();
+            var carStorage = $("#ddlModelStorage option:selected").val();
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:53753/api/rating/CalculateRates",
+                data: {gender:gender, age:age, noClaimsBonus:yearsNoClaims, costOfCar:costOfCar, insuranceDuration:'12', carStorage:carStorage}
+              }).done(function(msg) {
+                $("#txtQuote").text(msg);
+                showQuoteDetails();
+            });
+          }
+          else
+          {
+            $("#dvCarDetailsAlert").show();
           }
         }
-
-        //Check radio buttons for content
-        if ($("#" + sectionToValidate + " input:radio").is(':checked') != true)
-          emptyFields++;
-
-        //Check Dropdown for content
-        var dropdowns = $("#" + sectionToValidate + " option").filter(':selected').text();
-        for (var index = 0; index < dropdowns.length; index++) {
-          if ( dropdowns[index].value === "Select" )
-            emptyFields++;
-        }
-
-        //Check number boxes for content
-        if ($('#' + sectionToValidate + ' input[type="number"]').val() === "")
-          emptyFields++;
-
-        return emptyFields;
-      }
-
-      function showCarDetails() {
-
-        var emptyFields = validateFields("dvPersonalDetails");
-
-        if(emptyFields > 0) {
-          $("#dvPersonalDetailsAlert").show();
-        }
-        else { 
-          // Hide personal details
-          $("#dvPersonalDetails").hide();
-          // Proceed to car details step of process
-          $("#dvCarDetails").show();
-          setActiveNavigation("carLink");
-        }         
-      }
-
-      function showPersonalDetails() {
-          // Hide personal details
-          $("#dvCarDetails").hide();
-          $("#dvPersonalDetailsAlert").hide();
-
-          // Proceed to car details step of process
-          $("#dvPersonalDetails").show();
-          setActiveNavigation("personalLink");
-      }
-
-      function setActiveNavigation(activeTab) {
-        $(".nav li").removeClass("active");
-
-        $("#" + activeTab).addClass("active");
-      }
 
       </script>
 
@@ -168,71 +151,72 @@
 
         <div class="container wrap">
         <section id="body" class="container">
+          <div id="dvQuoteDetailsAlert" class="alert alert-warning quoteDetailsAlert">Please fill in both sections and click Get Quote. Thanks! :)</div>
+
           <!-- WRAP PERSONAL DETAILS FORM IN CHILD PANEL -->
           <div id="dvPersonalDetails">
-            <div id="dvPersonalDetailsAlert" class="alert alert-warning personalDetailsAlert">
-            Please fill in all of the fields in the form. Thanks! :)
-            </div>
+            <div id="dvPersonalDetailsAlert" class="alert alert-warning personalDetailsAlert">Please fill in all of the fields in the form. Thanks! :)</div>
             <h1>Please enter your details</h1>
-              <p>In order to provide you with a quote, we need a few details. Please complete the form below. Thanks.</p>
-              <div class="row">
-                <form class="form-horizontal">
-                  <div class="form-group">
-                    <label for="nameInput" class="control-label col-md-2">Name</label>
-                    <div class="col-md-4">
-                      <input id="txtName" type="text" name="nameInput" class="form-control personalDetails" placeholder="Your Name" />
-                    </div>
+            <p>In order to provide you with a quote, we need a few details. Please complete the form below. Thanks.</p>
+            <div class="row">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="nameInput" class="control-label col-md-2">Name</label>
+                  <div class="col-md-4">
+                    <input id="txtName" type="text" name="nameInput" class="form-control personalDetails" placeholder="Your Name" />
                   </div>
-                  <div class="form-group">
-                    <label for="ageInput" class="control-label col-md-2">Age</label>
-                    <div class="col-md-2">
-                      <input id="txtAge" type="number" name="ageInput" class="form-control personalDetails" placeholder="Your Age" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="ageInput" class="control-label col-md-2">Age</label>
+                  <div class="col-md-2">
+                    <input id="txtAge" type="number" name="ageInput" class="form-control personalDetails" placeholder="Your Age" />
                   </div>
-                  <div class="form-group">
-                    <label for="genderInput" class="control-label col-md-2">Gender</label>
-                    <div class="col-md-2">  
-                      <input id="rdoGenderMale" name="rdoSex" class="personalDetails" type="radio" value="male"> Male
-                      <input id="rdoGenderFemale" name="rdoSex" class="personalDetails" type="radio" value="female"> Female
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="genderInput" class="control-label col-md-2">Gender</label>
+                  <div class="col-md-2">  
+                    <input id="rdoGenderMale" name="rdoSex" class="personalDetails" type="radio" value="m"> Male
+                    <input id="rdoGenderFemale" name="rdoSex" class="personalDetails" type="radio" value="f"> Female
                   </div>
-                  <div class="form-group">
-                    <label for="townCityInput" class="control-label col-md-2">Town/City</label>
-                    <div class="col-md-4">
-                      <input id="txtTownCity" type="text" name="townCityInput" class="form-control personalDetails" placeholder="Your Town/City" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="townCityInput" class="control-label col-md-2">Town/City</label>
+                  <div class="col-md-4">
+                    <input id="txtTownCity" type="text" name="townCityInput" class="form-control personalDetails" placeholder="Your Town/City" />
                   </div>
-                  <div class="form-group">
-                    <label for="emailInput" class="control-label col-md-2">Email Address</label>
-                    <div class="col-md-4">
-                      <input id="txtEmail" type="email" name="emailInput" class="form-control personalDetails" placeholder="Your Email Address" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="emailInput" class="control-label col-md-2">Email Address</label>
+                  <div class="col-md-4">
+                    <input id="txtEmail" type="email" name="emailInput" class="form-control personalDetails" placeholder="Your Email Address" />
                   </div>
-                  <div class="form-group">
-                    <label class="control-label col-md-2">No Claims Bonus(in years)</label>
-                    <div class="col-md-4">
-                      <select id="ddlNCB" class="form-control">
-                        <option>Select</option>
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5+</option>
-                      </select>
-                    </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-md-2">No Claims Bonus(in years)</label>
+                  <div class="col-md-4">
+                    <select id="ddlNCB" class="form-control">
+                      <option>Select</option>
+                      <option>0</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5+</option>
+                    </select>
                   </div>
-                  <div class="form-group">
-                    <div class="col-md-4">
-                      <input id="btnNext" value="Next" class="btn btn-default btn-sm btn-success" onclick="showCarDetails()" />
-                    </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-4">
+                    <input id="btnNext" value="Next" class="btn btn-default btn-sm btn-success" onclick="showCarDetails()" />
                   </div>
-              </form>
+                </div>
+            </form>
           </div>
         </div>
 
         <!-- WRAP CAR DETAILS FORM IN CHILD PANEL -->
-        <div id= "dvCarDetails" class="dvCarDetails">
+        <div id="dvCarDetails" class="dvCarDetails">
+          <div id="dvCarDetailsAlert" class="alert alert-warning carDetailsAlert">Please fill in all of the fields in the form. Thanks! :)</div>
           <h1>Car details</h1>
           <p>In order to give you a quote, we need to know a little bit about your car.</p>
           <div class="row">
@@ -254,22 +238,19 @@
               <div class="form-group">
                 <label for="modelInput" class="control-label col-md-2">Model</label>
                 <div class="col-md-4">
-                  <input id="txtModel" type="text" name="modelInput" class="form-control"
-                  placeholder="Your Model" />
+                  <input id="txtModel" type="text" name="modelInput" class="form-control" placeholder="Your Model" />
                 </div>
               </div>
               <div class="form-group">
-                <label for="modelAgeInput" class="control-label col-md-2">Age</label>
+                <label for="modelAgeInput" class="control-label col-md-2">Car Age</label>
                 <div class="col-md-2">
-                  <input id="txtModelAge" type="number" name="modelAge" class="form-control"
-                  placeholder="Model Age" />
+                  <input id="txtModelAge" type="number" name="modelAge" class="form-control" placeholder="Model Age" />
                 </div>
               </div>
               <div class="form-group">
                 <label for="modelEngineInput" class="control-label col-md-2">Engine Size</label>
                 <div class="col-md-4">  
-                  <input id="txtModelEngine" type="text" name="modelEngine" class="form-control"
-                  placeholder="Model Engine" />
+                  <input id="txtModelEngine" type="text" name="modelEngine" class="form-control" placeholder="Model Engine" />
                 </div>
               </div>
               <div class="form-group">
@@ -287,16 +268,41 @@
               <div class="form-group">
                 <label for="modelEstValue" class="control-label col-md-2">Estimated Value</label>
                 <div class="col-md-4">
-                  <input id="txtModelEstValue" type="number" name="modelEstValue" class="form-control"
-                  placeholder="Model Value" />
+                  <input id="txtModelEstValue" type="number" name="modelEstValue" class="form-control" placeholder="Model Value" />
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="col-md-4">
-                <!-- ONCLICK OF BUTTON, VALIDATE FORM DETAILS AND IF VALID - MAKE API REQUEST, PASSING FORM CONTENT -->
-                <input id="btnBack" value="Back" class="btn btn-success" onclick="showPersonalDetails()" />
-                <input id="btnNext" type="submit" value="Get Quote" class="btn btn-success" onclick="" />
+                  <!-- ONCLICK OF BUTTON, VALIDATE FORM DETAILS AND IF VALID - MAKE API REQUEST, PASSING FORM CONTENT -->
+                  <input id="btnBack" value="Back" class="btn btn-success" onclick="showPersonalDetails()" />
+                  <input id="btnNext" value="Get Quote" class="btn btn-success" onclick="getQuote()" />
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+        <!-- WRAP Quote DETAILS FORM IN CHILD PANEL -->
+        <div id="dvQuoteDetails" class="dvQuoteDetails">
+          
+          <h1>Quote</h1>
+          <p>Here is the insurance Quote that we can offer you:</p>
+          <div class="row">
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label class="control-label col-md-2">Quote Price £</label>
+                <div class="col-md-4">
+                  <label id="txtQuote" class="control-label col-md-2" />
+                  <!--<input  type="text" name="quoteDisplay" class="form-control" enabled="false" />-->
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-md-4">
+                  <!-- ONCLICK OF BUTTON, VALIDATE FORM DETAILS AND IF VALID - MAKE API REQUEST, PASSING FORM CONTENT -->
+                  <input id="btnQuoteBack" value="Back" class="btn btn-success" onclick="showCarDetails()" />
                 </div>
               </div>
             </form>
