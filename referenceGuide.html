@@ -22,6 +22,22 @@
     margin-top: 30px;
   }
 
+  .lead:hover {
+  	color: darkorange;
+  	-webkit-transition: color 1s ease-in;
+	-moz-transition: color 1s ease-in;
+  	-o-transition: color 1s ease-in;
+  	transition: color 1s ease-in;
+  }
+
+  a.link:hover {
+  	color: darkorange;
+  	-webkit-transition: color 1s ease-in;
+	-moz-transition: color 1s ease-in;
+  	-o-transition: color 1s ease-in;
+  	transition: color 1s ease-in;
+  }
+
 </style>
 
 <body>
@@ -41,13 +57,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Introduction</a>
+                        <a href="#intro">Introduction</a>
                     </li>
                     <li>
-                        <a href="#">Technologies</a>
+                        <a href="#tech">Technologies</a>
                     </li>
                     <li>
-                        <a href="#">Further Reading</a>
+                        <a href="#reading">Further Reading</a>
                     </li>
                 </ul>
             </div>
@@ -66,7 +82,7 @@
                 </h1>
 
                 <h2>
-                    <a href="#">Introduction</a>
+                    <a name="intro">Introduction</a>
                 </h2>
                 <p class="lead">
                     <em>what are we doing?</em>
@@ -81,34 +97,37 @@
                 </p>
 
                 <p>
-                	As a student, you will create a new <a href="http://en.wikipedia.org/wiki/Single-page_application">single-page application</a> that will enable users to enter both their personal details and vehicle details before submitting the information and retrieving an insurance quote. The layout of the application is very simple and easy to construct due to the usage of Twitter's <a href="http://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)">Bootstrap</a> technology. A <a href="http://www.slideshare.net/Diacode/frontend-frameworks-a-quick-overview">front-end framework</a> which gives developers a more efficient option for creating prototypes on the web.
+                	As a student, you will create a new <a class="link" href="http://en.wikipedia.org/wiki/Single-page_application">single-page application</a> that will enable users to enter both their personal details and vehicle details before submitting the information and retrieving an insurance quote. The layout of the application is very simple and easy to construct due to the usage of Twitter's <a class="link" href="http://en.wikipedia.org/wiki/Bootstrap_(front-end_framework)">Bootstrap</a> technology. A <a class="link" href="http://www.slideshare.net/Diacode/frontend-frameworks-a-quick-overview">front-end framework</a> which gives developers a more efficient option for creating prototypes on the web.
                 </p>
 
                 <p>
-                	One of the biggest features the application has is the ability to transform depending on the device that is being used to view it. In the UK, approximately <a href="http://mobilemarketingmagazine.com/7-10-people-uk-now-own-smartphone/">7 out of 10 people now use a smartphone</a> so it's important that when we develop applications we consider the device that it will be viewed on. Originally where developers only catered for desktop computers, we now have to be aware of tablets and smartphones as well as the desktop. The application will use what is known as <a href="http://blog.teamtreehouse.com/beginners-guide-to-responsive-web-design">Responsive Web Design</a> or <i>'RWD'</i> to cater for this and it really does improve the usability of anything on the web as it accomodates a much wider user base and promotes the incentive for a user to return to the application in the future.
+                	One of the biggest features the application has is the ability to transform depending on the device that is being used to view it. In the UK, approximately <a class="link" href="http://mobilemarketingmagazine.com/7-10-people-uk-now-own-smartphone/">7 out of 10 people now use a smartphone</a> so it's important that when we develop applications we consider the device that it will be viewed on. Originally where developers only catered for desktop computers, we now have to be aware of tablets and smartphones as well as the desktop. The application will use what is known as <a class="link" href="http://blog.teamtreehouse.com/beginners-guide-to-responsive-web-design">Responsive Web Design</a> or <i>'RWD'</i> to cater for this and it really does improve the usability of anything on the web as it accomodates a much wider user base and promotes the incentive for a user to return to the application in the future.
                 </p>
 
                 <h2>
-                    <a href="#">Technologies</a>
+                    <a name="tech">Technologies</a>
                 </h2>
                 <p class="lead">
                     <em>what are we using?</em>
                 </p>
                 <ul>
-                  <li>Twitter Bootstrap</li>
-                  <li>JavaScript & jQuery</li>
-                  <li>HTML & CSS</li>
-                  <li>Node.js</li>
-                  <li>Responsive Web Design(RWD)</li>
-                  <li>GitHub</li>
+            		<li><a href="html.html">HTML</a></li>	
+	                <li>CSS</li>
+	                <li>Twitter Bootstrap</li>
+	                <li>JavaScript & jQuery</li>
+	                <li>Node.js</li>
                 </ul>
 
                 <h2>
-                    <a href="#">Further Reading</a>
+                    <a name="reading">Further Reading</a>
                 </h2>
                 <p class="lead">
                     <em>want to know more?</em>
                 </p>
+                <ul>
+                  <li>Responsive Web Design(RWD)</li>
+                  <li>GitHub</li>
+                </ul>
                 <p>Links go here... :)</p>
             </div>
         </div>
