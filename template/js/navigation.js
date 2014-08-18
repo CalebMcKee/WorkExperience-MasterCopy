@@ -1,4 +1,5 @@
 
+// This is preparation done on the page startup to setup the initial page start
   $().ready(function(){
 
     hideErrorAlerts();
@@ -20,53 +21,50 @@
   });
 
   function showCarDetails() {
-    hideErrorAlerts();
+      
+    // Hide the personal details section (dvPersonalDetails)
+    // Hide the quote section (dvQuoteDetails)
+    // Show the car details section (dvCarDetails)
 
-    var emptyFields = validateFields("dvPersonalDetails");
-
-    if(emptyFields > 0) {
-      $("#dvPersonalDetailsAlert").show();
-    }
-    else { 
-      // Hide personal details
-      $("#dvPersonalDetails").hide();
-      $("#dvQuoteDetails").hide();
-      // Proceed to car details step of process
-      $("#dvCarDetails").show();
-      setActiveNavigation("carLink");
-    }         
   }
 
   function showPersonalDetails() {
-      // Hide personal details
-      $("#dvCarDetails").hide();
-      $("#dvQuoteDetails").hide();
-      hideErrorAlerts();
-
-      // Proceed to car details step of process
-      $("#dvPersonalDetails").show();
-      setActiveNavigation("personalLink");
+      // Hide the car details section (dvCarDetails)
+      // Hide the quote section (dvQuoteDetails)
+      // Show the personal details section (dvPersonalDetails)
   }
 
   function showQuoteDetails() {
-    hideErrorAlerts();
-
-    var emptyFields = validateFields("dvPersonalDetails") + validateFields("dvCarDetails") + validateFields("dvQuoteDetails");
-
-    if (emptyFields === 0)
-    {
-      $("#dvCarDetails").hide();
-      $("#dvPersonalDetails").hide();
-
-       $("#dvQuoteDetails").show();
-       setActiveNavigation("quoteLink");
-    }
-    else
-    {
-      $("#dvQuoteDetailsAlert").show();
-    }
+      // Hide the car details section (dvCarDetails)
+      // Hide the personal details section (dvQuoteDetails)
+      // Show the quote section (dvPersonalDetails)
   }
 
+  function getQuote() {
+
+    // Perform validation to test that all data has been entered
+
+    if (/* Page is Valid */)
+    {
+
+      // Get the values from the page elements that you need to create your JSON
+
+      $.ajax({
+          type: "POST",
+          url: "http://localhost:53753/api/rating/CalculateRates",
+          data: { /* create JSON here */ }
+        }).done(function(msg) {
+          // Put the return value into Label created on quote details
+          // Hide the Car Details section
+          // Display the quote details page
+          $("#txtQuote").text(msg);
+          showQuoteDetails();
+      });
+  }
+
+//################################# Helper Functions - look at these when validating and changing section #########################################
+
+  // Use this function to "Reset" the form and hide all 3 error sections whenever you make a section transition
   function hideErrorAlerts()
   {
     $("#dvPersonalDetailsAlert").hide();
@@ -74,57 +72,10 @@
     $("#dvQuoteDetailsAlert").hide();
   }
 
+  // This function will control the top navigation and set the active tab when you make a section transition
+  // You will need to call it and pass in the tab that needs to be made active
   function setActiveNavigation(activeTab) {
     $(".nav li").removeClass("active");
 
     $("#" + activeTab).addClass("active");
-  }
-
-  function validateFields(sectionToValidate) {
-
-    var emptyFields = 0;
-    var textBoxes = $("#" + sectionToValidate + " input:text");
-
-    //Check text boxes for content
-    for (var index = 0; index < textBoxes.length; index++) {
-      if(textBoxes[index].value == "") {
-        // Increment counter
-        emptyFields++;
-      }
-    }
-
-    //Check number boxes for content
-    if ($('#' + sectionToValidate + ' input[type="number"]').val() === "")
-      emptyFields++;
-
-    return emptyFields;
-  }
-
-  function getQuote() {
-    //reset error message
-    $("#dvCarDetailsAlert").hide();
-
-    var emptyFields = validateFields("dvCarDetails");
-
-    if (emptyFields === 0)
-    {
-      var gender = $("#dvPersonalDetails input:radio[name=rdoSex]:checked").val();
-      var age = $("#txtAge").val();
-      var yearsNoClaims = $("#ddlNCB option:selected").val();
-      var costOfCar = $("#txtModelEstValue").val();
-      var carStorage = $("#ddlModelStorage option:selected").val();
-
-      $.ajax({
-          type: "POST",
-          url: "http://localhost:53753/api/rating/CalculateRates",
-          data: {gender:gender, age:age, noClaimsBonus:yearsNoClaims, costOfCar:costOfCar, insuranceDuration:'12', carStorage:carStorage}
-        }).done(function(msg) {
-          $("#txtQuote").text(msg);
-          showQuoteDetails();
-      });
-    }
-    else
-    {
-      $("#dvCarDetailsAlert").show();
-    }
   }
