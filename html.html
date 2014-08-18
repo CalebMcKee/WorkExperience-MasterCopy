@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HTML</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<style>
+
+  /* Basic styles added... */
+  .row {
+    margin-top: 30px;
+  }
+
+  .lead:hover {
+  	color: darkorange;
+  	-webkit-transition: color 1s ease-in;
+	-moz-transition: color 1s ease-in;
+  	-o-transition: color 1s ease-in;
+  	transition: color 1s ease-in;
+  }
+
+  a.link:hover {
+  	color: darkorange;
+  	-webkit-transition: color 1s ease-in;
+	-moz-transition: color 1s ease-in;
+  	-o-transition: color 1s ease-in;
+  	transition: color 1s ease-in;
+  }
+
+  .codeOutput {
+    width: 100%;
+    border: 1px solid black;
+    padding: 10px;
+  }
+
+</style>
+
+<body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="referenceGuide.html">Work XP Reference Guide</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8">
+                <h1 class="page-header">
+                    <span class="glyphicon glyphicon-file"></span>
+                    LIT Work XP
+                    <small>Reference Guide</small>
+                </h1>
+
+                <h2>
+                    <a name="intro">HTML - Hypertext Markup Language</a>
+                </h2>
+                <p class="lead">
+                    <em>The backbone of the internet</em>
+                </p>
+
+                <p>
+                    HTML stands for HyperText Markup Language. Developed by scientist Tim Berners-Lee in 1990, HTML is the "hidden" code that helps us communicate with others on the World Wide Web (WWW).
+                </p>
+                <p>
+                    When writing HTML, you add "tags" to the text in order to create the structure. These tags tell the browser how to display the text or graphics in the document. For example, the following document has a simple layout (structure). Notice there are three major parts: a heading, two paragraphs and a bulleted list.
+                </p>
+                <code>
+                    &lt;html&gt;<br><br>
+                        &lt;h1&gt;This is heading text&lt;/h1&gt;<br><br>
+                        &lt;p&gt;This is a section of paragraph text&lt;/p&gt;<br><br>
+                        &lt;p&gt;This is another section of paragraph text :)&lt;/p&gt;<br><br>
+                        &lt;ul&gt;<br>
+                        &lt;li&gt;first listitem&lt;/li&gt;<br>
+                        &lt;li&gt;second listitem&lt;/li&gt;<br>
+                        &lt;li&gt;third listitem&lt;/li&gt;<br>
+                        &lt;/ul&gt;<br><br>
+                    &lt;/html&gt;
+                </code>
+                <br><br>
+                <p>The code above will create the following output when viewed in a web browser.</p>
+                <img class="codeOutput" src="html1.png">
+                <br><br>
+                <p class="lead">
+                <em>The tools you need</em>
+                </p>
+                <p>
+                    Fortunately, HTML is written in plain text. That means you aren't required to spend lots of money on editing software to create HTML. All you need to create a document is a simple text editor. Every operating system comes with a text editor pre-installed(If you are using Windows, it's Notepad. If you are using an Apple computer, it's TextEdit). One of the most popular free text editors available right now is <a href="http://www.sublimetext.com/">Sublime Text</a>, which is available for Windows and Apple machines.
+                </p>
+                <br>
+                <p class="lead">
+                <em>The basics</em>
+                </p>
+                <p>
+                As with everything code-related, there are rules which we as developers must abide by. In HTML, the rules are fairly simple. For starters, HTML tags are always surrounded by what are called angle brackets &lt; and &gt;.<br><br>
+                For example: <code>&lt;p&gt;This is how to construct a paragraph in HTML&lt;/p&gt;</code>
+                </p>
+                <br>
+                <p class="lead">
+                <em>Elements</em>
+                </p>
+                <p>
+                    The words/letters between these two angle brackets are called elements. These are the coded commands within HTML. Elements tell the browser how to display the web page.
+                </p>
+                <p>
+                    Primarily, the purpose of this reference guide is to give you a basic understanding of the core concepts of the languages covered in the work exerience project. If you are interested to learn more about HTML and work through various examples please visit the links below.
+                </p>
+                <ul>
+                    <li><a href="http://www.w3schools.com/html/">w3schools - learning HTML</a></li>
+                    <li><a href="http://www.codecademy.com/en/tracks/web">Codecademy - HTML & CSS</a></li>
+                    <li><a href="http://www.htmldog.com/guides/html/beginner/">HTML Dog - HTML beginner tutorial</a></li>
+                    <li><a href="http://teamtreehouse.com/">treehouse - subscription based learning(but does offer a 14 day free trial)</a></li>
+                </ul>
+            </div>
+        </div>
+
+                <hr>
+
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p><span class="glyphicon glyphicon-copyright-mark"></span> Liberty Information Technology, Belfast 2014</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- js source links... -->
+    <script src="js/jquery-2.1.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
