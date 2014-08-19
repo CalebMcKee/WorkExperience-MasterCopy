@@ -8,6 +8,7 @@
 // ==================================================================================================
 
 	var express 	= require('express');
+	var cors 		= require('cors');
 	var modifiers 	= require('./modifiers');
 	var api 		= express();			// Need to call to generate the API server
 
@@ -48,7 +49,7 @@
 	// REGISTER ROUTES FOR API
 	// We have declared the actions that we want to see when we access a certain URL above, but we must
 	// update the server with the new routes as well
-
+	api.use(cors());
 	api.use('/api', router);
 
 // ==================================================================================================
