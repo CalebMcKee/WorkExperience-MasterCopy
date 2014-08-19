@@ -3,6 +3,7 @@
     "description": "API to return rating values for the car insurance application",  
     "version": "1.0.0", 			
     "dependencies": {   			
-        "express": "~4.0.0"
+        "express": "~4.0.0",
+        "cors": "~2.4.1"
     }
 }
