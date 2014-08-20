@@ -108,11 +108,11 @@
             var carStorage = $("#ddlModelStorage option:selected").val();
 
             $.ajax({
-                type: "POST",
-                url: "http://localhost:53753/api/rating/CalculateRates",
+                type: "GET",
+                url: "http://lit-wrkexp-01.lit.lmig.com:8080/api/calculateRates",
                 data: {gender:gender, age:age, noClaimsBonus:yearsNoClaims, costOfCar:costOfCar, insuranceDuration:'12', carStorage:carStorage}
               }).done(function(msg) {
-                $("#txtQuote").text(msg);
+                $("#txtQuote").text(msg.result);
                 showQuoteDetails();
             });
           }

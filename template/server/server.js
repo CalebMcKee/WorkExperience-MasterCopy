@@ -12,7 +12,7 @@
 	var modifiers 	= require('./modifiers');
 	var api 		= express();			// Need to call to generate the API server
 
-	var port = 8080;
+	var port = 53753;
 
 // ==================================================================================================
 // API ROUTES
@@ -26,19 +26,17 @@
 		res.json({message: 'Welcome to the Car Insurance API.  Provide the correct URL and JSON to calculate the rates'});
 	});
 
-	router.get('/calculateRates', function(req, res) {
+	router.post('/calculateRates', function(req, res) {
 		// This is the JSON object that we passed as a parameter.  Values can be accessed by model.ValueName
 		// i.e. model.age
+
 		var model = req.query;
 
 		// Setup basic values
 		var basePrice = 500;
 		
 		// Call each of our built functions to get the specific modifier needed to make the calculation
-		var totalCost = basePrice * modifiers.CarStorage(model.carStorage);
-		totalCost = totalCost * modifiers.Personal(model.age, model.gender);
-		totalCost = totalCost * modifiers.NoClaims(model.noClaimsBonus);
-		totalCost = totalCost * modifiers.CarCost(model.costOfCar);
+		var totalCost = basePrice * modifiers.Personal(model.age, model.gender);
 
 		// Return the calculated value as a JSON object
 		res.json({ result: totalCost });
@@ -51,7 +49,7 @@
 	// update the server with the new routes as well
 	api.use(cors());
 	api.use('/api', router);
-
+	
 // ==================================================================================================
 // START SERVER
 // Now that we have told the server what actions to take we must start the server so that it can 
