@@ -24,7 +24,7 @@
   }
 
   .lead:hover {
-  	color: darkorange;
+  	color: SEAGREEN;
   	-webkit-transition: color 1s ease-in;
 	-moz-transition: color 1s ease-in;
   	-o-transition: color 1s ease-in;
@@ -32,7 +32,7 @@
   }
 
   a.link:hover {
-  	color: darkorange;
+  	color: SEAGREEN;
   	-webkit-transition: color 1s ease-in;
 	-moz-transition: color 1s ease-in;
   	-o-transition: color 1s ease-in;
@@ -43,6 +43,19 @@
     width: 100%;
     border: 1px solid black;
     padding: 10px;
+  }
+
+  .codeBlock {
+  	margin: auto;
+  	background-color: lightgrey;
+  	border: 1px solid grey;
+  	border-radius: 25px;
+  }
+
+  .codeBlock p {
+  	padding-top: 10px;
+  	padding-left: 20px;
+  	padding-bottom: 10px;
   }
 
 </style>
@@ -87,18 +100,22 @@
                 <p>
                     When writing HTML, you add "tags" to the text in order to create the structure. These tags tell the browser how to display the text or graphics in the document. For example, the following document has a simple layout (structure). Notice there are three major parts: a heading, two paragraphs and a bulleted list.
                 </p>
-                <code>
-                    &lt;html&gt;<br><br>
-                        &lt;h1&gt;This is heading text&lt;/h1&gt;<br><br>
-                        &lt;p&gt;This is a section of paragraph text&lt;/p&gt;<br><br>
-                        &lt;p&gt;This is another section of paragraph text :)&lt;/p&gt;<br><br>
-                        &lt;ul&gt;<br>
-                        &lt;li&gt;first listitem&lt;/li&gt;<br>
-                        &lt;li&gt;second listitem&lt;/li&gt;<br>
-                        &lt;li&gt;third listitem&lt;/li&gt;<br>
-                        &lt;/ul&gt;<br><br>
-                    &lt;/html&gt;
-                </code>
+                <div class="codeBlock">
+                	<p>
+	                <code>
+	                    &lt;html&gt;<br><br>
+	                        &lt;h1&gt;This is heading text&lt;/h1&gt;<br><br>
+	                        &lt;p&gt;This is a section of paragraph text&lt;/p&gt;<br><br>
+	                        &lt;p&gt;This is another section of paragraph text :)&lt;/p&gt;<br><br>
+	                        &lt;ul&gt;<br>
+	                        &lt;li&gt;first listitem&lt;/li&gt;<br>
+	                        &lt;li&gt;second listitem&lt;/li&gt;<br>
+	                        &lt;li&gt;third listitem&lt;/li&gt;<br>
+	                        &lt;/ul&gt;<br><br>
+	                    &lt;/html&gt;
+	                </code>
+	                </p>
+                </div>
                 <br><br>
                 <p>The code above will create the following output when viewed in a web browser.</p>
                 <img class="codeOutput" src="html1.png">
