@@ -47,15 +47,6 @@
 
   .codeBlock {
   	margin: auto;
-  	background-color: lightgrey;
-  	border: 1px solid grey;
-  	border-radius: 25px;
-  }
-
-  .codeBlock p {
-  	padding-top: 10px;
-  	padding-left: 20px;
-  	padding-bottom: 10px;
   }
 
 </style>
@@ -91,27 +82,37 @@
                     <a name="intro">The Basics of Programming</a>
                 </h2>
                 <p class="lead">
-                    <em>learning to take over the world :)</em>
+                    <em>There are two ways to write error-free programs; only the third one works :)</em>
                 </p>
 
-
+              <p>
+                Learning to program is a very important skill. Coding affects our daily lives in ways that we can't even imagine. If we even consider the basic functions of a smartphone; the ability to turn it on, login to the device via a pin code/swipe combination, play music, etc. These functions are all achieved by the code that has been created and is running behind the scenes.
+              </p>
+              <p>
+                As with smartphone apps, web development requires programming knowledge and it's important that we explain the basics of programming before taking things any further. At this point is worth noting that programming can take time to fully understand, so don't be disheartened if these principles take time to settle in. Also, there's always help available by simply asking your mentors for assistance(that's what they're there for :) )
+              </p>
+              <p>
+                The programming language we are going to be using in this project is JavaScript. If you're unfamiliar with JavaScript, don't panic, we have a section dedicated purely to explaining JavaScript <a href="javascript.html">here</a>.
+              </p>
+              <div class="codeBlock">
                 <pre>
-                  var today = new Date();
-                  var hourNow = today.getHours();
-                  var greeting;
-                  
-                  if (hourNow > 18) {
-                      greeting = 'Good evening!';
-                  } else if (hourNow > 12) {
-                      greeting = 'Good afternoon!';
-                  } else if (hourNow > 0) {
-                      greeting = 'Good morning!';
-                  } else {
-                      greeting = 'Welcome!';
-                  }
-                  
-                  document.write(greeting);
+var today = new Date();
+var hourNow = today.getHours();
+var greeting;
+
+if (hourNow > 18) {
+    greeting = 'Good evening!';
+} else if (hourNow > 12) {
+    greeting = 'Good afternoon!';
+} else if (hourNow > 0) {
+    greeting = 'Good morning!';
+} else {
+    greeting = 'Welcome!';
+}
+
+console.log(greeting);
                 </pre>
+              </div>
 
             </div>
         </div>
