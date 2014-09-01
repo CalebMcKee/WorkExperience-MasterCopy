@@ -39,3 +39,7 @@
   .octicon-chevron-right {
     padding-right: 10px;
   }
+
+  ul {
+    list-style-type: none;
+  }
