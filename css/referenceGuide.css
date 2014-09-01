@@ -1,12 +1,12 @@
   /* Basic styles for reference guide */
   /* Andrew Hiles */
-  
+
   .row {
     margin-top: 30px;
   }
 
-  .lead:hover {
-  	color: SEAGREEN;
+  .leadHeaders:hover {
+  	color: seagreen;
   	-webkit-transition: color 1s ease-in;
 	-moz-transition: color 1s ease-in;
   	-o-transition: color 1s ease-in;
@@ -14,7 +14,7 @@
   }
 
   a.link:hover {
-  	color: SEAGREEN;
+  	color: darkorange;
   	-webkit-transition: color 1s ease-in;
 	  -moz-transition: color 1s ease-in;
   	-o-transition: color 1s ease-in;
@@ -34,4 +34,8 @@
   /* Highlight code blocks in red */
   pre {
     color: darkred;
+  }
+
+  .octicon-chevron-right {
+    padding-right: 10px;
   }
