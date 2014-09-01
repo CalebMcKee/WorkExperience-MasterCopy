@@ -71,7 +71,7 @@
             </div>
 
             <div class="col-md-8">
-              <h3><span class="mega-octicon octicon-chevron-right"></span>Variables</h3>
+              <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Variables</h3>
               <p>
                 Variables are used to store pieces of information(words, numbers, images, etc). They are the bread and butter of every computer program. They can be used to store the simplest of data to the most complex things. Below shows an example of 3 different variables being declared and used to store different information. Note: Every variable requires the 'var' keyword to be placed before the variable name itself. This informs the compiler that you are creating a new variable.
               </p>
@@ -100,7 +100,7 @@ var hourNow = today.getHours();
             </div>
 
             <div class="col-md-8">
-              <h3><span class="mega-octicon octicon-chevron-right"></span>Functions</h3>
+              <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Functions</h3>
               <p>
                 Functions are at the core of programming. They are used to perform various operations and manipulate data in a way that the programmer has specificially required. Functions are covered in more detail in our <a href="javascript.html">JavaScript</a> section of the reference guide but the following examples will give you a basic understanding of how a function works. Below are a few examples which explain the basics of functions in programming.
               </p>
@@ -116,6 +116,7 @@ function addition(num1, num2) {
               <p>
                 This example shows a basic function called addition. The function takes two values(also known as parameters) and adds them together. This is a very simple example of how a function can be used to perform a task for programmers. So, if we wanted to use this function somewhere else in our code, we would simple type the following:
               </p>
+              <br>
               <pre>
 addition(2, 4);                
               </pre>
@@ -124,6 +125,7 @@ addition(2, 4);
               <p>
                 Another good example of basic functions would be to incorporate the variables that we've already covered and use them in new function. In the code below, we are going to setup our variables today, hourNow and greeting and then call a new function to work out what is the most appropriate greeting to display depending on the hour of the day.
               </p>
+              <br>
               <pre>
 function setGreeting(hourNow) {
 
@@ -149,6 +151,7 @@ setGreeting(hourNow);
               <p>
                 This is a great example to round up this section as we are covering variables, functions and conditional logic(another area covered in the JavaScript section). Basically, we are have created our 3 variables and then passed the hourNow variable to the setGreeting() function. This function will then check the value of hourNow and depending on what hour of the day it is, the message variable will be manipulated and returned to the program. Conditional logic is used to determine what the message variable will contain. The example below displays what is known as an if-else statement.
               </p>
+              <br>
               <pre>
 if (hourNow > 18) {
     greeting = 'Good evening!';
@@ -167,10 +170,10 @@ if (hourNow > 18) {
                 This is a very basic introduction to programming with JavaScript and if you are wanting to learn more, please visit the links below.
               </p>
               <ul>
-                <li><a href="http://eloquentjavascript.net/">Eloquent JavaScript - Beginners guide to programming using JS</a></li>
-                <li><a href="http://www.codecademy.com/en/tracks/javascript">Codecademy - Getting started with programming</a></li>
-                <li><a href="http://www.programmingbasics.org/">Programming Basics</a></li>
-                <li><a href="https://www.khanacademy.org/hour-of-code/hour-of-code-tutorial/v/welcome-hour-of-code">Khan Academy's learn to code tutorials</a></li>
+                <li><a class="link" href="http://eloquentjavascript.net/">Eloquent JavaScript - Beginners guide to programming using JS</a></li>
+                <li><a class="link" href="http://www.codecademy.com/en/tracks/javascript">Codecademy - Getting started with programming</a></li>
+                <li><a class="link" href="http://www.programmingbasics.org/">Programming Basics</a></li>
+                <li><a class="link" href="https://www.khanacademy.org/hour-of-code/hour-of-code-tutorial/v/welcome-hour-of-code">Khan Academy's learn to code tutorials</a></li>
               </ul>
             </div>
 
