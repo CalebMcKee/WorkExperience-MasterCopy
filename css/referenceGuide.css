@@ -2,7 +2,7 @@
   /* Andrew Hiles */
 
   .row {
-    margin-top: 30px;
+    margin-top: 40px;
   }
 
   .leadHeaders:hover {
@@ -42,4 +42,8 @@
 
   ul {
     list-style-type: none;
+  }
+
+  li {
+  	padding-bottom: 8px;
   }
