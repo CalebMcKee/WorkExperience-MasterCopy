@@ -68,7 +68,12 @@
                     Compatible with browsers — Twitter Bootstrap is created with modern browsers in mind and it is compatible with all modern browsers such as Mozilla Firefox, Google Chrome, Safari, Internet Explorer, and Opera.
                     Open Source — And the best part is, it is completely free to download and use.
                 </p>
-                <input class="toggleBootstrap btn-success" type="button" value="Turn Bootstrap On/Off" />
+                <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>The power of Twitter Bootstrap</h3>
+                <p>
+                    Now that you are a little bit more familiar with the general funcitonality of Bootstrap it's time to demonstrate just how powerful this framework is. Simply click the button below to toggle Bootstrap on/off on this page. We think you'll notice a difference <span class="glyphicon glyphicon-thumbs-up"></span>.
+                </p>
+                <br>
+                <input type="button" class="toggleBootstrap btn btn-primary" value="Turn Bootstrap On/Off" />
             </div>
         </div>
 
@@ -94,7 +99,6 @@
             $('.toggleBootstrap').click(function() {
 
                 if($('link[rel="stylesheet"]').attr('disabled') == 'disabled') {
-                    alert($('link[rel="stylesheet"]').attr('disabled'));
                   $('link[rel="stylesheet"]').removeAttr('disabled');  
                 }
                 else {
