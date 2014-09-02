@@ -23,7 +23,7 @@
 
   .codeOutput {
     width: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 10px;
   }
 
@@ -46,4 +46,16 @@
 
   li {
   	padding-bottom: 8px;
+  }
+
+  .rwdExample {
+    opacity: 0.5;
+    transition: opacity .5s ease-out;
+    -moz-transition: opacity .5s ease-out;
+    -webkit-transition: opacity .5s ease-out;
+    -o-transition: opacity .5s ease-out;
+  }
+
+  .rwdExample:hover {
+    opacity: 1;
   }
