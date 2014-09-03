@@ -42,11 +42,13 @@
 
   ul {
     list-style-type: none;
+    padding-left: 10px;
   }
 
   li {
   	padding-bottom: 8px;
   }
+
 
   .rwdExample {
     opacity: 0.5;
