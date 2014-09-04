@@ -15,6 +15,7 @@
 
   a.link:hover {
   	color: darkorange;
+    text-decoration: underline;
   	-webkit-transition: color 1s ease-in;
 	  -moz-transition: color 1s ease-in;
   	-o-transition: color 1s ease-in;
@@ -60,4 +61,9 @@
 
   .rwdExample:hover {
     opacity: 1;
+  }
+
+/* Remove default underline from Bootstrap CSS */
+  a:hover {
+    text-decoration: none;
   }
