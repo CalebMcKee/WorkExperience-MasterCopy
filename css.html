@@ -61,20 +61,36 @@
                 </p>
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>CSS Selectors</h3>
                 <p>
-                    Before we get into explaining how CSS can be applied to a web site, we must first explain how CSS works. At a glance, it's very simple. CSS styling is applied to elements on a web page using CSS selectors. Below is a simple example of a CSS selector that will change the background colour of all &lt;div&gt; elements to green.<br><br>
-                    <code>div { background-color: green; }</code><br><br>
-                    Selectors are the backbone of CSS and how it works. Once you know how to apply these selectors then you can use CSS to enhance the presentation of a web page or web site.
-                    <br><br>
-                    Below is an example of the &lt;div&gt; before styling and then after styling has been applied.
-                    <br><br>
-                    Before
-                    <br>
-                    <img class="codeOutput" src="css1.png">
-                    <br><br>
-                    After
-                    <br>
-                    <img class="codeOutput" src="css2.png">
+                    Before we get into explaining how CSS can be applied to a web site, we must first explain how CSS works. At a glance, it's very simple. CSS styling is applied to elements on a web page using CSS selectors. Below is a simple example of a CSS selector that will change the background colour of all &lt;div&gt; elements to green.
                 </p>
+                <pre>
+div { background-color: green; }
+                </pre>
+                <p>
+                    Selectors are the backbone of CSS and how it works. Once you know how to apply these selectors then you can use CSS to enhance the presentation of a web page or web site.
+                    Below is an example of the &lt;div&gt; before styling and then after styling has been applied.
+                </p>
+                <p><b>Before</b></p>
+                <div class="beforeContainer">
+                    <h5>Hello World!</h5>
+                    <p>This is a paragraph of text...</p>
+                    <ul>
+                        <li>link 1</li>
+                        <li>link 2</li>
+                        <li>link 3</li>
+                    </ul>
+                </div>
+                <br>
+                <p><b>After</b></p>
+                <div class="afterContainer">
+                    <h5>Hello World!</h5>
+                    <p>This is a paragraph of text...</p>
+                    <ul>
+                        <li>link 1</li>
+                        <li>link 2</li>
+                        <li>link 3</li>
+                    </ul>
+                </div>
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>How to apply CSS</h3>
                 <p>
                     There are 3 main ways to apply CSS to your web pages. They are in-line, internal and external. Firstly, there is no right & wrong way to apply CSS to your site but if you are creating a website that is receiving 1000s of visitors per day, there are ways to make your CSS much more performant.
@@ -85,8 +101,13 @@
                     <em>1. In-line</em>
                 </p>
                 <p>
-                    In-line styles are added directly into the HTML markup. Below is a simple example to highlight how an in-line works.<br><br>
-                    <code>&lt;h1 style="color: green"&gt;Guardians of the Galaxy&lt;/h1&gt;</code><br><br>
+                    In-line styles are added directly into the HTML markup. Below is a simple example to highlight how an in-line works.
+                </p>
+                <pre>
+                    <xmp>
+<h1 style="color: green">Guardians of the Galaxy</h1>
+                    </xmp>
+                </pre>
                     This will make the header text green.
                 </p>
                 <p>
@@ -96,37 +117,47 @@
                     <em>2. Internal</em>
                 </p>
                 <p>
-                    Internal styles are added in the head element in the HTML of a web page. They are wrapped in &lt;style&gt; tags.<br><br>
-                    <code>&lt;html&gt;<br>
-                    &lt;head&gt;<br>
-                    &lt;title&gt;Guardians of the Galaxy&lt;/title&gt;<br>
-                    &lt;style&gt;<br>
-                    <br>
-                    h1 { color: green; }<br>
-                    h2 { color: blue; }<br>
-                    <br>
-                    &lt;/style&gt;<br>
-                    ...
-                    </code><br><br>
+                    Internal styles are added in the head element in the HTML of a web page. They are wrapped in &lt;style&gt; tags.
+                </p>
+                <pre>
+                    <xmp>
+<html>
+    <head>
+        <title>Guardians of the Galaxy</title>
+        
+        <style>
+
+            h1 { color: green; }
+            h2 { color: blue; }
+        
+        </style>
+        ...
+                    </xmp>
+                </pre>
+                <p>
                     This will make the header text for h1 header text green and header text for h2 header text blue.
                 </p>
                 <p class="lead">
                     <em>3. External</em>
                 </p>
                 <p>
-                    External styles are contained in a separate file and can be used across an entire web site, not just for one single page. This makes external styling a very popular option and something that most web developers do. Below is an example of a basic style that will be saved in the file 'style.css'.<br><br>
-                    <code>
-                        h1 { color: green; }
-                    </code><br><br>
-                    style.css must be referenced from the HTML page you wish to apply the styling to.
-                    <br><br>
-                    <code>
-                        &lt;html&gt;<br>
-                        &lt;head&gt;<br>
-                        &lt;title&gt;&lt;/title&gt;<br>
-                        &lt;link rel="stylesheet" href="style.css"&gt;<br>
-                        ...
-                    </code>
+                    External styles are contained in a separate file and can be used across an entire web site, not just for one single page. This makes external styling a very popular option and something that most web developers do. Below is an example of a basic style that will be saved in the file 'style.css'.
+                </p>
+                    <pre>
+h1 { color: green; }
+                    </pre>
+                    <p>
+                        style.css must be referenced from the HTML page you wish to apply the styling to.
+                    </p>
+                    <pre>
+                        <xmp>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="style.css">
+        ...
+                        </xmp>
+                    </pre>
                 </p>
                 <p>
                     Primarily, the purpose of this reference guide is to give you a basic understanding of the core concepts of the languages covered in the work exerience project. If you are interested to learn more about CSS and work through various examples please visit the links below.
@@ -134,19 +165,19 @@
                 <ul>
                     <li>
                         <span class="octicon octicon-book"></span>
-                        <a class="link" href="http://www.w3schools.com/css/">w3schools - learning CSS</a>
+                        <a class="link" href="http://www.w3schools.com/css/" target="_blank">w3schools - learning CSS</a>
                     </li>
                     <li>
                         <span class="octicon octicon-book"></span>
-                        <a class="link" href="https://developer.mozilla.org/en-US/docs/Web/CSS">MDN - CSS reference guide</a>
+                        <a class="link" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">MDN - CSS reference guide</a>
                     </li>
                     <li>
                         <span class="octicon octicon-book"></span>
-                        <a class="link" href="http://www.htmldog.com/guides/css/beginner/">HTML Dog - CSS beginner tutorial</a>
+                        <a class="link" href="http://www.htmldog.com/guides/css/beginner/" target="_blank">HTML Dog - CSS beginner tutorial</a>
                     </li>
                     <li>
                         <span class="octicon octicon-book"></span>
-                        <a class="link" href="http://css-tricks.com/">CSS-Tricks - One of the best online resources for learning how to use CSS effectively & great for learning snazzy tips</a>
+                        <a class="link" href="http://css-tricks.com/" target="_blank">CSS-Tricks - One of the best online resources for learning how to use CSS effectively & great for learning snazzy tips</a>
                     </li>
                 </ul>
             </div>

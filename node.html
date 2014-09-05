@@ -14,31 +14,13 @@
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Reference Guide CSS -->
+    <link href="css/referenceGuide.css" rel="stylesheet">
+
+    <!-- Octicons CSS -->
+    <link href="octicons/octicons.css" rel="stylesheet">
+
 </head>
-
-<style>
-
-  .row {
-    margin-top: 30px;
-  }
-
-  .lead:hover {
-  	color: darkorange;
-  	-webkit-transition: color 1s ease-in;
-	-moz-transition: color 1s ease-in;
-  	-o-transition: color 1s ease-in;
-  	transition: color 1s ease-in;
-  }
-
-  a.link:hover {
-  	color: darkorange;
-  	-webkit-transition: color 1s ease-in;
-	-moz-transition: color 1s ease-in;
-  	-o-transition: color 1s ease-in;
-  	transition: color 1s ease-in;
-  }
-
-</style>
 
 <body>
 
@@ -71,7 +53,7 @@
                     <a name="intro">Node</a>
                 </h2>
                 <p class="lead">
-                    <em>Overview</em>
+                    <em>Sever-side JavaScript</em>
                 </p>
 
                 <p>
@@ -79,15 +61,21 @@
 <br/>
                 	On a server, such as the API which we are creating, there are a few key concepts that you need to know:
                     <ul>
-                        <li>Http Requests and Responses</li> 
-                        <li>Routing</li>
-                        <li>Asynchronous Execution</li>
+                        <li>
+                            <span class="glyphicon glyphicon-ok"></span>
+                            Http Requests and Responses
+                        </li> 
+                        <li>
+                            <span class="glyphicon glyphicon-ok"></span>
+                            Routing
+                        </li>
+                        <li>
+                            <span class="glyphicon glyphicon-ok"></span>
+                            Asynchronous Execution
+                        </li>
                     </ul>
                 </p>
-                <br />
-                <p class="lead">
-                    <em>HTTP Request and Response</em>
-                </p>
+                <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>HTTP Request and Response</h3>
                 <p>
                     HTTP (Hyper-text transfer protocol) is the basis for all information passed around on the internet.  When you request a webpage, your browser generates an http request and sends it to the required URL.  It then waits until a response is recieved and displays the data returned (i.e. the html/css/js).  We are creating our own http request and responses, the AJAX creates the request which is sent to our node server, which then generates the response which is passed back to the client.<br/>
                     In this way our data is being sent to and from the client and the server.  Now the important thing to note here is that there are different types of request that can be made, depending on what the client needs.  There are: <br />
@@ -101,9 +89,7 @@
                 </p>
 
                 <br />
-                <p class="lead">
-                    <em>Routing</em>
-                </p>
+                <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Routing</h3>
                 <p>
                     A node server is a very simple concept.  It will recieve Http Requests and will send out an Http Response.  When a request is recieved, it includes a specific URL which provides the route for the server to follow in order to provide the client with the information that it requires.  The server is setup in such a way that it can take the URL and can decipher which block of code or function to call for that route.  We are using a library called "express" to handle our routing for us.  We tell the express router that we want to create a specific type of route for the type of request that the server will recieve (GET, POST etc.).  When we set up the route, we provide the URL that the client must call to access this route and a function which holds the code to run when the route is called.  This function takes in two parameters, the http request and response objects.
                     <br /><br />
@@ -112,21 +98,24 @@
                     </code>
                 </p>
 <br />
-                <p class="lead">
-                    <em>Asynchronous Execution</em>
-                </p>
+                <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Asynchronous Execution</h3>
 
                 <p>
                     This is the key to why node is succesful as a server.  Unlike the client JS, where execution is sequential, the node server allows us to deal with multiple server calls at the same time.  This is vital, as a server must be able to deal with multiple different clients hitting it at the same moment and be able to deal with their request quickly and effectively.  Our server.js file defines the server and it's execution cycle.  It sets it up and once created, it respond to several different requests simultaneously.
                 </p>
 
                 <p>
-                    Primarily, the purpose of this reference guide is to give you a basic understanding of the core concepts of the languages covered in the work exerience project. If you are interested to learn more about JS and work through various examples please visit the links below.
+                    Primarily, the purpose of this reference guide is to give you a basic understanding of the core concepts of the languages covered in the work exerience project. If you are interested to learn more about Node and work through various examples please visit the links below.
                 </p>
                 <ul>
-                    <li><a href="http://nodejs.org/api/">Node Documentation</a></li>
-                    <li><a href="http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4">Create a RESTful API</a></li>
-                    <li>There are plenty of other tutorials and help available online - just google</li>
+                    <li>
+                        <span class="octicon octicon-book"></span>
+                        <a class="link" href="http://nodejs.org/api/" target="_blank">Node's Official Documentation</a>
+                    </li>
+                    <li>
+                        <span class="octicon octicon-book"></span>
+                        <a class="link" href="http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4" target="_blank">Creating a RESTful API</a>
+                    </li>
                 </ul>
             </div>
         </div>

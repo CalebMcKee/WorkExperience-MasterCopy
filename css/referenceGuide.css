@@ -83,3 +83,16 @@ div.boxContainer {
 .btnHideTable {
   display: none;
 }
+
+.beforeContainer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid DARKSLATEGRAY;
+}
+
+.afterContainer {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid DARKSLATEGRAY;
+  background-color: green;
+}
