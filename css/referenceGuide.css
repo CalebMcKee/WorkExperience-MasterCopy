@@ -67,3 +67,19 @@
   a:hover {
     text-decoration: none;
   }
+
+div.boxContainer {
+  width: 50%;
+  height: 60%;
+  background-color: NAVAJOWHITE;
+  border: 1px solid DARKSLATEGRAY;
+}
+
+.boxContainer p {
+  color: DARKSLATEGRAY;
+  padding: 5%;
+}
+
+.btnHideTable {
+  display: none;
+}

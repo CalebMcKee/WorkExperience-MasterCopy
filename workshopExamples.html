@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Work experience project, Reference guide, Web development, Coding">
-    <meta name="author" content="Andrew Hiles, James Anderson">
+    <meta name="author" content="Andrew Hiles">
 
     <title>Examples</title>
 
@@ -60,21 +60,31 @@
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>CSS</h3>
                 <p>
                     Click the button to modify the CSS on this page.
-                    <input type="button" class="toggleCSS btn btn-primary" value="Modify CSS" />
                 </p>
+                <input type="button" class="toggleCSS btn btn-success" value="Modify CSS" />
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>JavaScript</h3>
                 <p>
                     JavaScript is very powerful. It can interact directly with a web page and manipulate values on the fly. When you click the button below, several JavaScript functions will be called that will attempt to predict the top 6 football clubs in the English Premier League. Give it a try and if your team aren't top, you can always click again to randomize the table :)
                 </p>
-                <input type="button" class="btn btn-primary" value="Predict" onclick="predictTopSix()" />
+                <input id="btnPredict" type="button" class="btn btn-success" value="Predict" />
                 <br><br>
                 <div id="leagueTable" class="leagueDisplay">
-                <table id="topSixTeams" class="table table-bordered table-hover">
-                </table>
-                <input type="button" class="btn btn-primary" value="Hide table" onclick="hideTopSix()" />
-            </div>
+                    <table id="topSixTeams" class="table table-bordered table-hover">
+                    </table>
+                    <input id="btnHideTable" type="button" class="btn btn-success btnHideTable" value="Hide table" />
+                </div>
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>jQuery</h3>
+                <p>
+                    jQuery is just as powerful as JavaScript. It's actually a framework built using JavaScript but it lets developers do a lot more but write less code. jQuery offers some nifty UI effects and can really improve the look and feel of a website. If you hover over the red box below, you will get a glimpse of what jQuery can do.
+                </p>
+                <div class="boxContainer">
+                    <p>hover here...</p>
+                </div>
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Twitter Bootstrap</h3>
+                <p>
+                    Behold the power of Twitter Bootstrap. Turn it on/off by clicking the button below.
+                </p>
+                <input id="btnToggleBootstrap" type="button" class="btn btn-success btnToggleBootstrap" value="Bootstrap On" />
             </div>
         </div>
 
@@ -98,6 +108,13 @@
 
         $(document).ready(function() {
 
+            $("div.boxContainer").mouseover(function() {
+                $(this).find('p').text("ahhhhhhhhhhhhhhhhhhh!").append("<span class='mega-octicon octicon-squirrel'></span>");
+              })
+              .mouseout(function() {
+                $(this).find('p').text("hover here...");
+              })
+
             $('link[title="cssExample"]').attr('disabled', 'disabled');
 
             $('.toggleCSS').click(function() {
@@ -111,18 +128,24 @@
                 }
             })
 
-            $('.toggleBootstrap').click(function() {
-
+            $('.btnToggleBootstrap').click(function() {
                 if($('link[rel="stylesheet"]').attr('disabled') == 'disabled') {
-                  $('link[rel="stylesheet"]').removeAttr('disabled');  
+                  $('.btnToggleBootstrap').val('Bootstrap Off');
+                  $('link[rel="stylesheet"]').removeAttr('disabled');
+                  $('link[title="cssExample"]').attr('disabled', 'disabled');  
                 }
                 else {
+                    $('.btnToggleBootstrap').val('Bootstrap On');
                     $('link[rel="stylesheet"]').attr('disabled', 'disabled'); 
                 }
             })
 
         });    
 
+        /* Unobtrusive JS - Adding onclick event from script rather than inserting directly into the DOM */
+        var predictButton = document.getElementById('btnPredict');
+
+        predictButton.onclick =
         function predictTopSix() {
 
             // Declare football team array
@@ -131,8 +154,8 @@
             // Pass teams array to functions
             shuffleArray(footballTeams);
             outputTable(footballTeams);
-
-        }
+            styleTable();
+        };
 
         function shuffleArray(array) {
                 
@@ -174,11 +197,23 @@
                 secondCell.innerHTML = array[i];
             }
 
-            var leagueTable = document.getElementById('leagueTable').style.display="";
+            document.getElementById('leagueTable').style.display = 'block';
+            document.getElementById('btnHideTable').style.display = 'block';
         }
 
+        function styleTable() {
+
+            var els = document.getElementById('topSixTeams').getElementsByTagName('tr');
+            els[0].style.background = 'darkorange';
+            els[0].style.fontWeight = 'bold';   
+        }
+
+        /* Unobtrusive JS - Adding onclick event from script rather than inserting directly into the DOM */
+        var hideButton = document.getElementById('btnHideTable');
+
+        hideButton.onclick =
         function hideTopSix() {
-            var leagueTable = document.getElementById('leagueTable').style.display="none";  
+            var leagueTable = document.getElementById('leagueTable').style.display = 'none'; 
         }
 
     </script>
