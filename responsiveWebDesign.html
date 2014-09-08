@@ -66,10 +66,13 @@
                     Below are various examples that highlight the power of Responsive Web Design. These are only a few examples taken from <a class="link" href="http://www.mediaqueri.es/">mediaqueri.es</a>. Feel free to visit the site for more examples and witness how many companies are using RWD for their coporate websites.
                 </p>
                 <br>
+                <p><b>Pack's responsive layout (sourced from <a class="link" href="http://mediaqueri.es">mediaqueri.es</a>)</b></p>
                 <img class="codeOutput rwdExample" src="rwd1.png">
                 <br><br>
+                <p><b>Erik Ford's responsive layout (sourced from <a class="link" href="http://mediaqueri.es">mediaqueri.es</a>)</b></p>
                 <img class="codeOutput rwdExample" src="rwd2.png">
                 <br><br>
+                <p><b>The Great Discontent's responsive layout (sourced from <a class="link" href="http://mediaqueri.es">mediaqueri.es</a>)</b></p>
                 <img class="codeOutput rwdExample" src="rwd3.png">
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>How to go responsive</h3>
                 <p>
@@ -86,27 +89,62 @@
                     </li>
                     <li>
                         <span class="glyphicon glyphicon-thumbs-up"></span>
-                        Gridset template
+                        Grid-based layout
                     </li>
                 </ul>
                 <p>We will explain these in more detail below.</p>
+                <br>
                 <p class="lead">
                     <span class="mega-octicon octicon-file-code"></span>
                     <em>CSS media queries</em>
                 </p>
                 <p>
-                    Media queries are at the heart of Responsive Web Design. A media query looks like this...
+                    Media queries are at the heart of Responsive Web Design. Through the use of media queries we can target specific browser sizes and determine how to display web pages based on the result they return. Media Queries have been around for a long time but it's only recently that web designers and developers have started to truly understand their power. By using media queries we can make our CSS adapt to desktop, tablet and mobile layouts that will ensure the user doesn't miss any important content. Media queries are CSS properties and should be kept in CSS files when used on web pages. Below are examples of three different media queries. Each query targets a different browser size and depending on the size, limits the sizing of the element 'container'.
                 </p>
                 <pre>
-/* Apple iPad target */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) {
+/* Desktop sizing */
+@media screen and (max-width: 1000px) {
+
+    #container { width: 100%; }
+
+}
+
+/* Apple iPad sizing */
+@media screen and (max-width: 768px) {
+    
+    #container { width: 70%: }
+
+}
+
+/* Smaller tablet sizing */
+@media screen and (max-width: 600px) {
+
+    #container { width: 50%; }
+
 }
                 </pre>
                 <p class="lead">
                     <span class="mega-octicon octicon-file-code"></span>
                     <em>Fluid media</em>
+                </p>
+                <p>
+                    In earlier times of the world wide web, it was normal for images to be set to a specific height and width in pixels but this always came with a caveat: If you minimized or maximized the web browser too much, then the images would begin to move out of place and leave web pages looking horrible.
+                </p>
+                <p>
+                    Responsive images are a big part of RWD. If your images aren't responsive, then everything's going to look out of proportion when users maximize/minimize the screen size. One of the best ways to work around this issue in modern times has been to place our images inside a &lt;div&gt; container and to set its max-width to 100% like in the example below: 
+                </p>
+                <pre>
+img {
+
+  max-width: 100%;
+
+}
+                </pre>
+                <p>
+                    This ensures that images cannot span any greater in size than the size of the &lt;div&gt; that contains them and means when users scale down from desktop screen sizes to mobile screen sizes that the images will scale down appropriately and still look correctly-positioned on the web page. If you don't believe us, click <a class="link" href="#">here</a> and re-size the browser to see the outcome :) It's also worth pointing out that this works well with embedded videos, too.
+                </p>
+                <p>
+                    There is another way to resize images appropriately that requires writing media queries directly in-line inside the &lt;picture&gt; element. This is displayed below:
                 </p>
                 <pre>
 <xmp>
@@ -119,7 +157,7 @@ and (max-device-width : 1024px) {
                 </pre>
                 <p class="lead">
                     <span class="mega-octicon octicon-file-code"></span>
-                    <em>Gridset template</em>
+                    <em>Grid-based layout</em>
                 </p>
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Further Reading</h3>
             </div>
