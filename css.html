@@ -57,7 +57,7 @@
                 </p>
 
                 <p>
-                    CSS is the language for describing the presentation of Web pages, including colors, layout, and fonts. It allows one to adapt the presentation to different types of devices, such as large screens, small screens, or printers. CSS is independent of HTML and can be used with any XML-based markup language. The separation of HTML from CSS makes it easier to maintain sites, share style sheets across pages, and tailor pages to different environments. This is referred to as the separation of structure (or: content) from presentation.
+                    CSS is the language for describing and altering presentation of web pages(colours, fonts, data layout, etc). It gives designers and developers the ability to adapt the presentation of a web page to different types of devices, such as large screens, small screens, or printers. CSS is independent of HTML and can be used with any XML-based markup language. The separation of HTML from CSS makes it easier to maintain sites(especially when something stops working), tailor pages to different environments/devices, etc. This is known as the separation of structure (or content) from presentation.
                 </p>
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>CSS Selectors</h3>
                 <p>
@@ -93,12 +93,18 @@ div { background-color: green; }
                 </div>
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>How to apply CSS</h3>
                 <p>
-                    There are 3 main ways to apply CSS to your web pages. They are in-line, internal and external. Firstly, there is no right & wrong way to apply CSS to your site but if you are creating a website that is receiving 1000s of visitors per day, there are ways to make your CSS much more performant.
-
-                    However, as we are just explaining the basics, it's best to keep it simple :)
+                    There are 3 main ways to apply CSS to your web pages. They are in-line, internal and external. Firstly, it's important to note that whilst CSS isn't necessarily governed on the web, it is important to make sure we use it properly on web pages. The separation of CSS files from HTML markup helps ensure HTML is readible and accessible.
                 </p>
+                <p>
+                    Accessible HTML means that disabled users(eg. a blind person) can still access the web and engage with the content through devices known as 'screen readers'. These devices scan all the elements on the page and read the content back to the user. If we are to add styles to our HTML directly, it can affect the result that is read back to the user. Moving aside from accessibility, mixing CSS with HTML can be very difficult to debug for web designers and developers if a problem arises on a web page.
+                </p>
+                <p>
+                    There are 3 ways that you can include CSS on a web page. We'd recommend that you go with option 3 - External style sheets, but it's important that we explain each way to apply them.
+                </p>
+                
                 <p class="lead">
-                    <em>1. In-line</em>
+                    <span class="mega-octicon octicon-file-code"></span>
+                    <em>In-line</em>
                 </p>
                 <p>
                     In-line styles are added directly into the HTML markup. Below is a simple example to highlight how an in-line works.
@@ -113,8 +119,10 @@ div { background-color: green; }
                 <p>
 
                 </p>
+                
                 <p class="lead">
-                    <em>2. Internal</em>
+                    <span class="mega-octicon octicon-file-code"></span>
+                    <em>Internal</em>
                 </p>
                 <p>
                     Internal styles are added in the head element in the HTML of a web page. They are wrapped in &lt;style&gt; tags.
@@ -137,8 +145,10 @@ div { background-color: green; }
                 <p>
                     This will make the header text for h1 header text green and header text for h2 header text blue.
                 </p>
+                
                 <p class="lead">
-                    <em>3. External</em>
+                    <span class="mega-octicon octicon-file-code"></span>
+                    <em>External</em>
                 </p>
                 <p>
                     External styles are contained in a separate file and can be used across an entire web site, not just for one single page. This makes external styling a very popular option and something that most web developers do. Below is an example of a basic style that will be saved in the file 'style.css'.
@@ -159,6 +169,7 @@ h1 { color: green; }
                         </xmp>
                     </pre>
                 </p>
+                <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Further Reading</h3>
                 <p>
                     Primarily, the purpose of this reference guide is to give you a basic understanding of the core concepts of the languages covered in the work exerience project. If you are interested to learn more about CSS and work through various examples please visit the links below.
                 </p>
@@ -178,6 +189,10 @@ h1 { color: green; }
                     <li>
                         <span class="octicon octicon-book"></span>
                         <a class="link" href="http://css-tricks.com/" target="_blank">CSS-Tricks - One of the best online resources for learning how to use CSS effectively & great for learning snazzy tips</a>
+                    </li>
+                    <li>
+                        <span class="octicon octicon-book"></span>
+                        <a class="link" href="http://www.w3.org/WAI/intro/accessibility.php" target="_blank">W3C Web Accessibility Guidelines</a>
                     </li>
                 </ul>
             </div>

@@ -88,7 +88,6 @@
                     There are other types available, but they are less commonly used.  Within our server we need to specify the type of request for each url.  An example of this (POST) can be seen in the next section.
                 </p>
 
-                <br />
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Routing</h3>
                 <p>
                     A node server is a very simple concept.  It will recieve Http Requests and will send out an Http Response.  When a request is recieved, it includes a specific URL which provides the route for the server to follow in order to provide the client with the information that it requires.  The server is setup in such a way that it can take the URL and can decipher which block of code or function to call for that route.  We are using a library called "express" to handle our routing for us.  We tell the express router that we want to create a specific type of route for the type of request that the server will recieve (GET, POST etc.).  When we set up the route, we provide the URL that the client must call to access this route and a function which holds the code to run when the route is called.  This function takes in two parameters, the http request and response objects.
@@ -97,13 +96,13 @@
                         router.post('url/of/the/route', function(requestObject, responseObject){// Code to run; });
                     </code>
                 </p>
-<br />
+
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Asynchronous Execution</h3>
 
                 <p>
                     This is the key to why node is succesful as a server.  Unlike the client JS, where execution is sequential, the node server allows us to deal with multiple server calls at the same time.  This is vital, as a server must be able to deal with multiple different clients hitting it at the same moment and be able to deal with their request quickly and effectively.  Our server.js file defines the server and it's execution cycle.  It sets it up and once created, it respond to several different requests simultaneously.
                 </p>
-
+                <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Further Reading</h3>
                 <p>
                     Primarily, the purpose of this reference guide is to give you a basic understanding of the core concepts of the languages covered in the work exerience project. If you are interested to learn more about Node and work through various examples please visit the links below.
                 </p>
