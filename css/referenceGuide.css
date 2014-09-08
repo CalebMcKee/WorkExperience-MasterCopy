@@ -96,3 +96,10 @@ div.boxContainer {
   border: 1px solid DARKSLATEGRAY;
   background-color: green;
 }
+
+img.responsiveImage {
+	height: auto;
+	max-width: 100%;
+	padding-top: 15%;
+
+}
