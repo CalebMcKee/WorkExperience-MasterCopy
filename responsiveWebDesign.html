@@ -81,23 +81,20 @@
                 <ul>
                     <li>
                         <span class="glyphicon glyphicon-thumbs-up"></span>
-                        CSS media queries
+                        <a class="link" a href="#mediaQueries">CSS media queries</a>
                     </li>
                     <li>
                         <span class="glyphicon glyphicon-thumbs-up"></span>
-                        Fluid media
+                        <a class="link" a href="#fluidMedia">Fluid media</a>
                     </li>
                     <li>
                         <span class="glyphicon glyphicon-thumbs-up"></span>
-                        Grid-based layout
+                        <a class="link" a href="#gridBasedLayout">Grid-based layout</a>
                     </li>
                 </ul>
                 <p>We will explain these in more detail below.</p>
                 <br>
-                <p class="lead">
-                    <span class="mega-octicon octicon-file-code"></span>
-                    <em>CSS media queries</em>
-                </p>
+                <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span><a name="mediaQueries">CSS media queries</a></h3>
                 <p>
                     Media queries are at the heart of Responsive Web Design. Through the use of media queries we can target specific browser sizes and determine how to display web pages based on the result they return. Media Queries have been around for a long time but it's only recently that web designers and developers have started to truly understand their power. By using media queries we can make our CSS adapt to desktop, tablet and mobile layouts that will ensure the user doesn't miss any important content. Media queries are CSS properties and should be kept in CSS files when used on web pages. Below are examples of three different media queries. Each query targets a different browser size and depending on the size, limits the sizing of the element 'container'.
                 </p>
@@ -125,7 +122,7 @@
                 </pre>
                 <p class="lead">
                     <span class="mega-octicon octicon-file-code"></span>
-                    <em>Fluid media</em>
+                    <a name="fluidMedia">Fluid media</a>
                 </p>
                 <p>
                     In earlier times of the world wide web, it was normal for images to be set to a specific height and width in pixels but this always came with a caveat: If you minimized or maximized the web browser too much, then the images would begin to move out of place and leave web pages looking horrible.
@@ -157,9 +154,49 @@ img {
                 </pre>
                 <p class="lead">
                     <span class="mega-octicon octicon-file-code"></span>
-                    <em>Grid-based layout</em>
+                    <a name="gridBasedLayout">Grid-based layout</a>
+                </p>
+                <p>
+                    The final component that we need to cover is grid-based layouts. When we think of web pages, we have to remember that they are documents. We have to step back and think of them in a print format, just like a page in a newspaper. One thing that always stands out when reading a newspaper is that the columns are always correctly alligned all throughout. What responsive web design does is encourage designers/developers to start thinking about structuring web pages as though they were printed articles, using a grid-system that keeps everything correctly positioned and ensures the user can view all of the content without having to scroll in the web browser.
+                </p>
+                <p>
+                    The grid is a part of responsive design that really comes down to the designer/developer's personal preference - Eg. Do you go for a grid-based framework(Bootstrap's grid, 960 Grid System, Foundation, etc) or create your own grid-based layout with CSS? Both options have their own strengths and it really depends on how much time you have to create a web site as well as how experienced you are with responsive design principles. For this reference guide, we used Twitter Bootstrap's pre-baked responsive styling - Primarily to get this guide up and running as quickly as possible. We also used it for the car insurance application(just minimize the page and watch how the options collapse into a drop-down menu, etc).
+                </p>
+                <p>
+                    By adopting a grid-based layout, we can split page content into columns. This ensures that when the viewport is reduced/increased, the page columns can be re-ordered to ensure everything is visibile and still in allignment. The code below illustrates a very simple grid-based approach in CSS.
+                </p>
+                <pre>
+/* 12-Column Grid Widths */
+.column-1  {width: 100%;}
+.column-2  {width: 50%;}
+.column-3  {width: 33.33%;}
+.column-4  {width: 25%;}
+.column-5  {width: 20%;}
+.column-6  {width: 16.6666666667%;}
+.column-7  {width: 14.2857142857%;}
+.column-8  {width: 12.5%;}
+.column-9  {width: 11.1111111111%;}
+.column-10 {width: 10%;}
+.column-11 {width: 9.09090909091%;}
+.column-12 {width: 8.33%;}
+                </pre>
+                <p>
+                    By using the grid CSS classes displayed above, we can ensure our web pages are correctly positioned and with the combined use of media queries, it means when the viewport is reduced/increased, the columns can be reduced/expanded to fit the screen.
                 </p>
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Further Reading</h3>
+                <p>
+                    Primarily, the purpose of this reference guide is to give you a basic understanding of the core concepts of the languages and development principles covered in the work exerience project. If you are interested to learn more about Responsive Web Design and work through various examples please visit the links below.
+                </p>
+                <ul>
+                    <li>
+                        <span class="octicon octicon-book"></span>
+                        <a class="link" href="" target="_blank"></a>
+                    </li>
+                    <li>
+                        <span class="octicon octicon-book"></span>
+                        <a class="link" href="" target="_blank"></a>
+                    </li>
+                </ul>
             </div>
         </div>
 
