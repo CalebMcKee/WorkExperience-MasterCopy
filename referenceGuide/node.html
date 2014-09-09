@@ -58,7 +58,7 @@
 
                 <p>
                 	Node is a relatively new scripting development language which is booming into popularity due to its ability to be written and learnt quickly.  As you will see within the project, the use of JS within web development is pretty fundamental and has many uses (basic JS, JQuery, AJAX, JSON etc.).  Node took the existing language of JavaScript and allowed it to be run on the Chrome V8 engine on the server.  Due to the speed at which is can be created, we are going to use it for our project.  For examples on how to write JS for node check out the JS cheat sheet.  It is worthwhile noting that JQuery is purely client side and has no place within node.
-<br/>
+                <br/>
                 	On a server, such as the API which we are creating, there are a few key concepts that you need to know:
                     <ul>
                         <li>
@@ -82,7 +82,7 @@
                     <ul>
                         <li><b>GET</b> requests which are used to get specific information from the server</li>
                         <li><b>POST</b> requests which take in data, which is encrypted and sent to the server to be saved</li>
-                        <li><b>DELETE</b> requests which tell the serevr to delete existing data records</li>
+                        <li><b>DELETE</b> requests which tell the server to delete existing data records</li>
                         <li><b>PUT</b> requests are used to replace the current data with the new data provided</li>
                     </ul>
                     There are other types available, but they are less commonly used.  Within our server we need to specify the type of request for each url.  An example of this (POST) can be seen in the next section.
@@ -91,11 +91,12 @@
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Routing</h3>
                 <p>
                     A node server is a very simple concept.  It will recieve Http Requests and will send out an Http Response.  When a request is recieved, it includes a specific URL which provides the route for the server to follow in order to provide the client with the information that it requires.  The server is setup in such a way that it can take the URL and can decipher which block of code or function to call for that route.  We are using a library called "express" to handle our routing for us.  We tell the express router that we want to create a specific type of route for the type of request that the server will recieve (GET, POST etc.).  When we set up the route, we provide the URL that the client must call to access this route and a function which holds the code to run when the route is called.  This function takes in two parameters, the http request and response objects.
-                    <br /><br />
-                    <code>
-                        router.post('url/of/the/route', function(requestObject, responseObject){// Code to run; });
-                    </code>
                 </p>
+<pre>
+<xmp>
+router.post('url/of/the/route', function(requestObject, responseObject){// Code to run; });
+</xmp>
+</pre>
 
                 <h3 class="leadHeaders"><span class="mega-octicon octicon-chevron-right"></span>Asynchronous Execution</h3>
 
