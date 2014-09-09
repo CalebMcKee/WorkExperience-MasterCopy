@@ -51,7 +51,7 @@
 
       $.ajax({
           type: "POST",
-          url: "http://localhost:53753/api/rating/CalculateRates",
+          url: "http://localhost:8080/api/rating/CalculateRates",
           data: { /* create JSON here */ }
         }).done(function(msg) {
           // Put the return value into Label created on quote details

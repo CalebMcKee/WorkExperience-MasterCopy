@@ -79,3 +79,63 @@
 
     $("#" + activeTab).addClass("active");
   }
+
+  function validateFields(sectionToValidate) {
+
+    var emptyFields = 0;
+    var textBoxes = $("#" + sectionToValidate + " input:text");
+
+    //Check text boxes for content
+    for (var index = 0; index < textBoxes.length; index++) {
+      if(textBoxes[index].value == "") {
+        // Increment counter
+        emptyFields++;
+      }
+    }
+
+    //Check radio buttons for content
+    /*if ($("#" + sectionToValidate + " input:radio").is(':checked') != true)
+      emptyFields++;
+
+    //Check Dropdown for content
+    var dropdowns = $("#" + sectionToValidate + " option").filter(':selected').text();
+    for (var index = 0; index < dropdowns.length; index++) {
+      if ( dropdowns[index].value === "Select" )
+        emptyFields++;
+    }*/
+
+    //Check number boxes for content
+    if ($('#' + sectionToValidate + ' input[type="number"]').val() === "")
+      emptyFields++;
+
+    return emptyFields;
+  }
+
+  function getQuote() {
+    //reset error message
+    $("#dvCarDetailsAlert").hide();
+
+    var emptyFields = validateFields("dvCarDetails");
+
+    if (emptyFields === 0)
+    {
+      var gender = $("#dvPersonalDetails input:radio[name=rdoSex]:checked").val();
+      var age = $("#txtAge").val();
+      var yearsNoClaims = $("#ddlNCB option:selected").val();
+      var costOfCar = $("#txtModelEstValue").val();
+      var carStorage = $("#ddlModelStorage option:selected").val();
+
+      $.ajax({
+          type: "GET",
+          url: "http://lit-wrkexp-01.lit.lmig.com:8080/api/calculateRates",
+          data: {gender:gender, age:age, noClaimsBonus:yearsNoClaims, costOfCar:costOfCar, insuranceDuration:'12', carStorage:carStorage}
+        }).done(function(msg) {
+          $("#txtQuote").text(msg.result);
+          showQuoteDetails();
+      });
+    }
+    else
+    {
+      $("#dvCarDetailsAlert").show();
+    }
+  }

@@ -12,7 +12,7 @@
 	var modifiers 	= require('./modifiers');
 	var api 		= express();			// Need to call to generate the API server
 
-	var port = 53753;
+	var port = 8080;
 
 // ==================================================================================================
 // API ROUTES
