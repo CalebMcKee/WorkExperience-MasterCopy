@@ -119,7 +119,7 @@
 
     if (emptyFields === 0)
     {
-      var gender = $("#dvPersonalDetails input:radio[name=rdoSex]:checked").val();
+      var gender = $("#dvPersonalDetails input:radio[name=rdoGender]:checked").val();
       var age = $("#txtAge").val();
       var yearsNoClaims = $("#ddlNCB option:selected").val();
       var costOfCar = $("#txtModelEstValue").val();
