@@ -4,7 +4,7 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="description" content="insurance application, work experience, learning, programming, web development, mohawk's rock :)">
+      <meta name="description" content="insurance application, work experience, learning, programming, web development">
       <meta name="author" content="Andrew Hiles, James Anderson">
       <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
 
@@ -12,122 +12,20 @@
 
       <!-- Bootstrap core CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
+
+      <!-- Custom CSS -->
+      <link href="css/details.css" rel="stylesheet">
+
+      <!-- JS files -->
       <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
       <script type="text/javascript" src="js/bootstrap.js"></script>
       <script type="text/javascript" src="js/navigation.js"></script>
-      
-      <style>
-
-        .navbar-fill {
-          background-color: #1A274E;
-          /* border-bottom: 6px solid #BD5248; */
-          border-bottom: 6px solid darkorange;
-        }
-
-        .btnGap{
-          margin-top: 30px;
-        }
-
-        .dvCarDetails {
-          display: none;
-        }
-
-        .dvQuoteDetails {
-          display: none;
-        }
-
-        .footer{
-          height:20px;
-          margin-top:15%;
-        }
-
-        .container {
-          background-color: #F6F6F8;
-        }
-
-        body {
-          background-color: #F6F6F8;
-        }
-
-        p.text-muted {
-          font-size: 12px;
-        }
-
-        a.navLink:hover
-        { 
-          color: darkorange;
-        }
-      
-      </style>
-
-      <script type="text/javascript">
-
-        function validateFields(sectionToValidate) {
-
-          var emptyFields = 0;
-          var textBoxes = $("#" + sectionToValidate + " input:text");
-
-          //Check text boxes for content
-          for (var index = 0; index < textBoxes.length; index++) {
-            if(textBoxes[index].value == "") {
-              // Increment counter
-              emptyFields++;
-            }
-          }
-
-          //Check radio buttons for content
-          /*if ($("#" + sectionToValidate + " input:radio").is(':checked') != true)
-            emptyFields++;
-
-          //Check Dropdown for content
-          var dropdowns = $("#" + sectionToValidate + " option").filter(':selected').text();
-          for (var index = 0; index < dropdowns.length; index++) {
-            if ( dropdowns[index].value === "Select" )
-              emptyFields++;
-          }*/
-
-          //Check number boxes for content
-          if ($('#' + sectionToValidate + ' input[type="number"]').val() === "")
-            emptyFields++;
-
-          return emptyFields;
-        }
-
-        function getQuote() {
-          //reset error message
-          $("#dvCarDetailsAlert").hide();
-
-          var emptyFields = validateFields("dvCarDetails");
-
-          if (emptyFields === 0)
-          {
-            var gender = $("#dvPersonalDetails input:radio[name=rdoSex]:checked").val();
-            var age = $("#txtAge").val();
-            var yearsNoClaims = $("#ddlNCB option:selected").val();
-            var costOfCar = $("#txtModelEstValue").val();
-            var carStorage = $("#ddlModelStorage option:selected").val();
-
-            $.ajax({
-                type: "GET",
-                url: "http://lit-wrkexp-01.lit.lmig.com:8080/api/calculateRates",
-                data: {gender:gender, age:age, noClaimsBonus:yearsNoClaims, costOfCar:costOfCar, insuranceDuration:'12', carStorage:carStorage}
-              }).done(function(msg) {
-                $("#txtQuote").text(msg.result);
-                showQuoteDetails();
-            });
-          }
-          else
-          {
-            $("#dvCarDetailsAlert").show();
-          }
-        }
-
-      </script>
 
     </head>
 
     <body>
-      
+      	<!-- Page content -->
+      	<!-- Navbar -->
         <nav class="navbar navbar-default navbar-static-top navbar-fill" role="navigation">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navMenu">
@@ -149,19 +47,27 @@
           </div><!-- /.navbar-collapse -->
         </nav>
 
+        <!-- Main page content -->
         <div class="container wrap">
         <section id="body" class="container">
+          <!-- Alert container -->
           <div id="dvQuoteDetailsAlert" class="alert alert-warning quoteDetailsAlert">Please fill in both sections and click Get Quote. Thanks! :)</div>
 
-          <!-- WRAP PERSONAL DETAILS FORM IN CHILD PANEL -->
+          <!-- Personal details container -->
           <div id="dvPersonalDetails">
             <div id="dvPersonalDetailsAlert" class="alert alert-warning personalDetailsAlert">Please fill in all of the fields in the form. Thanks! :)</div>
             <h1>Please enter your details</h1>
-            <p>In order to provide you with a quote, we need a few details. Please complete the form below. Thanks.</p>
+            <p>
+            	In order to provide you with a quote, we need a few details. Please complete the form below. Thanks.
+            </p>
+            <!-- Wrap details in Bootstrap class 'row' -->
             <div class="row">
+              <!-- Form class is required to take advantage of Bootstrap styling/positioning -->
               <form class="form-horizontal">
+                <!-- Every field in the form must be wrapped in a container using the 'form-group' CSS class -->
                 <div class="form-group">
                   <label for="nameInput" class="control-label col-md-2">Name</label>
+                  <!-- Add the 'col-md-4' CSS class to the container holding the input field. This ensures progressive enhancement when scaling browser sizes. -->
                   <div class="col-md-4">
                     <input id="txtName" type="text" name="nameInput" class="form-control personalDetails" placeholder="Your Name" />
                   </div>
@@ -175,8 +81,8 @@
                 <div class="form-group">
                   <label for="genderInput" class="control-label col-md-2">Gender</label>
                   <div class="col-md-2">  
-                    <input id="rdoGenderMale" name="rdoSex" class="personalDetails" type="radio" value="m"> Male
-                    <input id="rdoGenderFemale" name="rdoSex" class="personalDetails" type="radio" value="f"> Female
+                    <input id="rdoGenderMale" name="rdoGender" class="personalDetails" type="radio" value="m"> Male
+                    <input id="rdoGenderFemale" name="rdoGender" class="personalDetails" type="radio" value="f"> Female
                   </div>
                 </div>
                 <div class="form-group">
@@ -207,18 +113,23 @@
                 </div>
                 <div class="form-group">
                   <div class="col-md-4">
+                  	<!-- btnNext will call showCarDetails() if form is valid -->
                     <input id="btnNext" value="Next" class="btn btn-default btn-sm btn-success" onclick="showCarDetails()" />
                   </div>
                 </div>
             </form>
           </div>
         </div>
+        <!-- End of personal details container -->
 
-        <!-- WRAP CAR DETAILS FORM IN CHILD PANEL -->
+        <!-- Car details container -->
         <div id="dvCarDetails" class="dvCarDetails">
           <div id="dvCarDetailsAlert" class="alert alert-warning carDetailsAlert">Please fill in all of the fields in the form. Thanks! :)</div>
           <h1>Car details</h1>
-          <p>In order to give you a quote, we need to know a little bit about your car.</p>
+          <p>
+          	In order to give you a quote, we need to know a little bit about your car.
+  		  </p>
+  		  <!-- Wrap details in Bootstrap class 'row' -->
           <div class="row">
             <form class="form-horizontal">
               <div class="form-group">
@@ -274,21 +185,24 @@
 
               <div class="form-group">
                 <div class="col-md-4">
-                  <!-- ONCLICK OF BUTTON, VALIDATE FORM DETAILS AND IF VALID - MAKE API REQUEST, PASSING FORM CONTENT -->
+                  <!-- btnBack will call showPersonalDetails() function, hiding car details div and showing the personal details div -->
                   <input id="btnBack" value="Back" class="btn btn-success" onclick="showPersonalDetails()" />
+                  <!-- btnNext will validate form details and if valid, will make API request, passing form content -->
                   <input id="btnNext" value="Get Quote" class="btn btn-success" onclick="getQuote()" />
                 </div>
               </div>
             </form>
           </div>
         </div>
+        <!-- End of car details container -->
 
-
-        <!-- WRAP Quote DETAILS FORM IN CHILD PANEL -->
+        <!-- Quote details container -->
         <div id="dvQuoteDetails" class="dvQuoteDetails">
           
           <h1>Quote</h1>
-          <p>Here is the insurance Quote that we can offer you:</p>
+          <p>
+          	Here is the insurance Quote that we can offer you:
+          </p>
           <div class="row">
             <form class="form-horizontal">
               <div class="form-group">
@@ -308,9 +222,12 @@
             </form>
           </div>
         </div>
+        <!-- End of quote details container -->
         </section>
       </div>
+      <!-- End of main page content -->
 
+      <!-- Footer content (LIT contact details) -->
       <div class="footer">
         <div class="container">
           <p class="text-muted"><span class="glyphicon glyphicon-copyright-mark"></span> Liberty Information Technology 2014</p>
@@ -318,6 +235,7 @@
           <p class="text-muted"><span class="glyphicon glyphicon-earphone"></span> 02890 123 456</p>
         </div>
       </div>
-    
+      <!-- End of footer content -->
+
     </body>
   </html>
