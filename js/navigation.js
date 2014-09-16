@@ -89,7 +89,7 @@
           url: "http://lit-wrkexp-01.lit.lmig.com:8080/api/calculateRates",
           data: {gender:gender, age:age, noClaimsBonus:yearsNoClaims, costOfCar:costOfCar, carStorage:carStorage}
         }).done(function(msg) {
-          $("#txtQuote").text("Quote Price £ " + msg.result.toFixed(2));
+          $("#txtQuote").text(msg.result.toFixed(2));
           showQuoteDetails();
       });
     }
