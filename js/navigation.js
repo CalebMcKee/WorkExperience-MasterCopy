@@ -19,6 +19,20 @@
     });
   });
 
+//##################### NAVIGATION ##########################
+
+  function showPersonalDetails() {
+      // Hide personal details
+      $("#dvCarDetails").hide();
+      $("#dvQuoteDetails").hide();
+      hideErrorAlerts();
+
+      // Proceed to car details step of process
+      $("#dvPersonalDetails").show();
+      setActiveNavigation("personalLink");
+  }
+
+
   function showCarDetails() {
     hideErrorAlerts();
 
@@ -35,17 +49,6 @@
       $("#dvCarDetails").show();
       setActiveNavigation("carLink");
     }         
-  }
-
-  function showPersonalDetails() {
-      // Hide personal details
-      $("#dvCarDetails").hide();
-      $("#dvQuoteDetails").hide();
-      hideErrorAlerts();
-
-      // Proceed to car details step of process
-      $("#dvPersonalDetails").show();
-      setActiveNavigation("personalLink");
   }
 
   function showQuoteDetails() {
@@ -67,50 +70,6 @@
     }
   }
 
-  function hideErrorAlerts()
-  {
-    $("#dvPersonalDetailsAlert").hide();
-    $("#dvCarDetailsAlert").hide();
-    $("#dvQuoteDetailsAlert").hide();
-  }
-
-  function setActiveNavigation(activeTab) {
-    $(".nav li").removeClass("active");
-
-    $("#" + activeTab).addClass("active");
-  }
-
-  function validateFields(sectionToValidate) {
-
-    var emptyFields = 0;
-    var textBoxes = $("#" + sectionToValidate + " input:text");
-
-    //Check text boxes for content
-    for (var index = 0; index < textBoxes.length; index++) {
-      if(textBoxes[index].value == "") {
-        // Increment counter
-        emptyFields++;
-      }
-    }
-
-    //Check radio buttons for content
-    /*if ($("#" + sectionToValidate + " input:radio").is(':checked') != true)
-      emptyFields++;
-
-    //Check Dropdown for content
-    var dropdowns = $("#" + sectionToValidate + " option").filter(':selected').text();
-    for (var index = 0; index < dropdowns.length; index++) {
-      if ( dropdowns[index].value === "Select" )
-        emptyFields++;
-    }*/
-
-    //Check number boxes for content
-    if ($('#' + sectionToValidate + ' input[type="number"]').val() === "")
-      emptyFields++;
-
-    return emptyFields;
-  }
-
   function getQuote() {
     //reset error message
     $("#dvCarDetailsAlert").hide();
@@ -128,9 +87,9 @@
       $.ajax({
           type: "GET",
           url: "http://lit-wrkexp-01.lit.lmig.com:8080/api/calculateRates",
-          data: {gender:gender, age:age, noClaimsBonus:yearsNoClaims, costOfCar:costOfCar, insuranceDuration:'12', carStorage:carStorage}
+          data: {gender:gender, age:age, noClaimsBonus:yearsNoClaims, costOfCar:costOfCar, carStorage:carStorage}
         }).done(function(msg) {
-          $("#txtQuote").text(msg.result);
+          $("#txtQuote").text("Quote Price £ " + msg.result);
           showQuoteDetails();
       });
     }
@@ -139,3 +98,83 @@
       $("#dvCarDetailsAlert").show();
     }
   }
+
+  //##################### HELPERS ##########################
+
+  function hideErrorAlerts()
+  {
+    $("#dvPersonalDetailsAlert").hide();
+    $("#dvCarDetailsAlert").hide();
+    $("#dvQuoteDetailsAlert").hide();
+  }
+
+  function setActiveNavigation(activeTab) {
+    $(".nav li").removeClass("active");
+
+    $("#" + activeTab).addClass("active");
+  }
+
+
+//##################### VALIDATION ##########################
+
+  function compareValueAgainstRegex(regex, value)
+  {
+    if (regex.test(value))
+    {
+      return false;
+    }
+    return true;
+  }
+
+  function isFieldAlphaNumeric(value) {
+    return compareValueAgainstRegex(/^[a-z0-9]+$/i, value);
+  }
+
+  function isFieldNumeric(value) {
+    return compareValueAgainstRegex(/^[0-9]+$/i, value);
+  }
+
+  function validateSection(section, isContentsCorrect)
+  {
+    var errors = 0;
+    $(section).each(function(){
+
+      var fieldValue = $(this).val();
+
+      if (fieldValue === "")
+        errors++;
+
+      if (isContentsCorrect(fieldValue))
+        errors++;
+
+    });
+    return errors;
+  }
+
+  function validateFields(sectionToValidate) {
+
+    var errors = 0;
+
+    errors = errors + validateSection("#" + sectionToValidate + " input:text", isFieldAlphaNumeric) 
+                    + validateSection('#' + sectionToValidate + ' input[type="number"]', isFieldNumeric);
+
+    // Check radio buttons for content: use length tester to ensure that radio button exists
+    if ($("#" + sectionToValidate + " input:radio").length && $("#" + sectionToValidate + " input:radio").is(':checked') != true)
+      errors++;
+
+    // Check dropdowns have been set
+    $("#" + sectionToValidate + " option:selected").each(function(){
+      if (this.value === "Select"){
+        errors++;
+      }
+    });
+
+    $("#" + sectionToValidate + " .emailVal").each(function() {
+      if (compareValueAgainstRegex(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, $(this).val()))
+        errors++;
+    });
+
+    return errors;
+  }
+
+  

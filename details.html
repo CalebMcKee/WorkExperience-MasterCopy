@@ -55,7 +55,15 @@
 
           <!-- Personal details container -->
           <div id="dvPersonalDetails">
-            <div id="dvPersonalDetailsAlert" class="alert alert-warning personalDetailsAlert">Please fill in all of the fields in the form. Thanks! :)</div>
+            <div id="dvPersonalDetailsAlert" class="alert alert-warning personalDetailsAlert">Please fill in all of the fields in the form and check the following:<br/>
+              <ul>
+                <li>Name and Town must be alpha-numeric</li>
+                <li>Age must be numeric</li>
+                <li>Gender must be selected</li>
+                <li>No years claims must be specified</li>
+                <li>Email field should be must format</li>
+              </ul>
+            </div>
             <h1>Please enter your details</h1>
             <p>
             	In order to provide you with a quote, we need a few details. Please complete the form below. Thanks.
@@ -94,7 +102,7 @@
                 <div class="form-group">
                   <label for="emailInput" class="control-label col-md-2">Email Address</label>
                   <div class="col-md-4">
-                    <input id="txtEmail" type="email" name="emailInput" class="form-control personalDetails" placeholder="Your Email Address" />
+                    <input id="txtEmail" type="email" required name="emailInput" class="form-control personalDetails emailVal" placeholder="Your Email Address" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -124,7 +132,13 @@
 
         <!-- Car details container -->
         <div id="dvCarDetails" class="dvCarDetails">
-          <div id="dvCarDetailsAlert" class="alert alert-warning carDetailsAlert">Please fill in all of the fields in the form. Thanks! :)</div>
+          <div id="dvCarDetailsAlert" class="alert alert-warning carDetailsAlert">Please fill in all of the fields in the form and check the following:<br/>
+              <ul>
+                <li>Model must be alpha-numeric</li>
+                <li>Car Age, Engine Size and Car Value must be numeric</li>
+                <li>Manufacturer and Storage Location must be selected</li>
+              </ul>
+          </div>
           <h1>Car details</h1>
           <p>
           	In order to give you a quote, we need to know a little bit about your car.
@@ -161,7 +175,7 @@
               <div class="form-group">
                 <label for="modelEngineInput" class="control-label col-md-2">Engine Size</label>
                 <div class="col-md-4">  
-                  <input id="txtModelEngine" type="text" name="modelEngine" class="form-control" placeholder="Model Engine" />
+                  <input id="txtModelEngine" type="number" name="modelEngine" class="form-control" placeholder="Model Engine" />
                 </div>
               </div>
               <div class="form-group">
@@ -186,9 +200,9 @@
               <div class="form-group">
                 <div class="col-md-4">
                   <!-- btnBack will call showPersonalDetails() function, hiding car details div and showing the personal details div -->
-                  <input id="btnBack" value="Back" class="btn btn-success" onclick="showPersonalDetails()" />
+                  <input id="btnBack" type="button" value="Back" class="btn btn-success" onclick="showPersonalDetails()" />
                   <!-- btnNext will validate form details and if valid, will make API request, passing form content -->
-                  <input id="btnNext" value="Get Quote" class="btn btn-success" onclick="getQuote()" />
+                  <input id="btnNext" type="button" value="Get Quote" class="btn btn-success" onclick="getQuote()" />
                 </div>
               </div>
             </form>
@@ -209,7 +223,6 @@
                 <label class="control-label col-md-2">Quote Price £</label>
                 <div class="col-md-4">
                   <label id="txtQuote" class="control-label col-md-2" />
-                  <!--<input  type="text" name="quoteDisplay" class="form-control" enabled="false" />-->
                 </div>
               </div>
 
