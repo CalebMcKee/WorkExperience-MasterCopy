@@ -114,6 +114,15 @@
     $("#" + activeTab).addClass("active");
   }
 
+  function addRemoveError(elementId, IsAdd) {
+    if(IsAdd) {
+      $("#" + elementId + "Group").addClass("has-error");
+    }
+    else {
+      $("#" + elementId + "Group").removeClass("has-error"); 
+    }
+  }
+
 
 //##################### VALIDATION ##########################
 
@@ -141,12 +150,20 @@
 
       var fieldValue = $(this).val();
 
-      if (fieldValue === "")
+      if (fieldValue === ""){
         errors++;
-
-      if (isContentsCorrect(fieldValue))
+        addRemoveError(this.id, true);
+      }
+      else{
+        addRemoveError(this.id, false);
+      }
+      if (isContentsCorrect(fieldValue)){
         errors++;
-
+        addRemoveError(this.id, true);
+      }
+      else{
+        addRemoveError(this.id, false);
+      }
     });
     return errors;
   }
@@ -166,6 +183,10 @@
     $("#" + sectionToValidate + " option:selected").each(function(){
       if (this.value === "Select"){
         errors++;
+        addRemoveError($(this).parent()[0].id, true);
+      }
+      else{
+        addRemoveError($(this).parent()[0].id, false);
       }
     });
 
